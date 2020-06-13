@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.css" />
+  </head>
+  <body>
+    <h1>Dis-COVID</h1>
+
+    <a href="index.html">Go to Home</a>
+    <a href="#" id="logout">Logout</a>
+
+
+    <form id="add-test-form">
+        <input type="text" name="day" placeholder="day">
+        <input type="text" name="time" placeholder="1.2">
+        <button>Add Test element</button>
+    </form>
+    
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+
+    <script>
+      var firebaseConfig = {
+          apiKey: "AIzaSyDAquTNfqjwa8bMBSzmyO_sEaeKhhq0rWQ",
+          authDomain: "dis-covid.firebaseapp.com",
+          databaseURL: "https://dis-covid.firebaseio.com",
+          projectId: "dis-covid",
+          storageBucket: "dis-covid.appspot.com",
+          messagingSenderId: "93140684291",
+          appId: "1:93140684291:web:b740d37d012982f706c836",
+          measurementId: "G-ZNYK27S4Z4"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        // Initialize database
+        const db = firebase.firestore();
+        db.settings({timestampsInSnapshots: true});
+    </script>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
+

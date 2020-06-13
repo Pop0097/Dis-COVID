@@ -1,0 +1,42 @@
+body {
+    background-color: #b0b0b0;
+}
+
+
+h1 {
+    color: #0400b0;
+    font-family: Tahoma, Geneva, sans-serif;
+    display: inline-block;
+}
+
+a {
+    float: right;
+}
+
+.page-header {
+    text-align: center;
+}
+
+.login {
+    text-align: right;
+    font-size: 18px;
+}
+
+.search-bar {
+    margin: auto;
+    width: 60%;
+    padding: 5px;
+}
+
+#search-bar {
+    width: 90%;
+    margin: auto;
+}
+
+img {
+    position: relative;
+    left: 20%;
+
+    width: 25%;
+    height: 25%;
+}

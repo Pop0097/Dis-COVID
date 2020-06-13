@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log in</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.css" />
+  </head>
+  <body>
+     
+    
+    <div class="page-header"> 
+      <h1>Dis-COVID</h1>
+    </div>
+
+    <a href="index.html">Go to Home</a><br>
+    <a href="sign_up.html">Sign up</a>
+    <a href="#" id="logout">Logout</a>
+
+    <h4>Login</h4><br />
+    <form id="login-form">
+      <div class="input-field">
+        <label for="login-email">Email address: </label>
+        <input type="email" id="login-email" required />
+        
+      </div>
+      <div class="input-field">
+        <label for="login-password">Your password: </label>
+        <input type="password" id="login-password" required />
+        
+      </div>
+      <button class="btn yellow darken-2 z-depth-0">Login</button>
+    </form>
+    
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDAquTNfqjwa8bMBSzmyO_sEaeKhhq0rWQ",
+            authDomain: "dis-covid.firebaseapp.com",
+            databaseURL: "https://dis-covid.firebaseio.com",
+            projectId: "dis-covid",
+            storageBucket: "dis-covid.appspot.com",
+            messagingSenderId: "93140684291",
+            appId: "1:93140684291:web:b740d37d012982f706c836",
+            measurementId: "G-ZNYK27S4Z4"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        // Initialize database
+        const db = firebase.firestore();
+        db.settings({timestampsInSnapshots: true});
+        //Initializes authentication
+        const auth = firebase.auth();
+    </script>
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="js/login.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
+

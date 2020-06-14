@@ -156,10 +156,10 @@ body {
 .container .tags { 
     color: black;
     background-color: #7AC9AB;
-    border-radius: 5px;
-    margin: 2%;
+    border-radius: 10%;
+    margin: 10px;
     font-size: 14px;
-    padding: 2%;
+    padding: 0;
 }
 
 .container button:hover {

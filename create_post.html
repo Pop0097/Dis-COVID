@@ -18,10 +18,8 @@
     <form id="add-test-form">
         <input type="text" name="day" placeholder="day">
         <input type="text" name="time" placeholder="1.2">
-        <label class="upload-group">
-          Upload Image
-          <input type="file" id="file">
-        </label>
+        <progress value="0" max="100" id="uploader">0%</progress> <!-- progress bar for upload -->
+        <input type="file" value="upload" id="fileButton">
         <button>Add Test element</button>
     </form>
     
@@ -50,6 +48,34 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
+
+        // Elements for file upload START OF SECTION
+        var uploader = document.getElementById('uploader');
+        var fileButton = document.getElementById('fileButton');
+
+        // Listens for file selection
+        fileButton.addEventListener('change', function(e) {
+          // Gets file
+          var file = e.target.files[0];
+          // Creates a storage reference ('folder_name/file_name' is how it's stored)
+          var storageRef = firebase.storage().ref('images/' + file.name);
+          // Upload file
+          var task = storageRef.put(file);
+          // Update progress bar
+          task.on('state_changed',
+            function progress(snapshot) { // updates progress
+              var percentage = (snapshot.bytesTransferred / snapshot.totalByes) *100;
+              uploader.value = percentage;
+            },
+            function error(err) { // notifies errors
+
+            },
+            function complete() { // alerts when file is finished uploading
+
+            }
+            );
+        });
+        
         firebase.analytics();
         // Initialize database
         const db = firebase.firestore();
@@ -59,7 +85,8 @@
     </script>
 
     <script src="js/app.js"></script>
-    <script src="js/authenticate.js"></script>
+    <script src="js/logout.js"></script>
+    <script src="js/user_status.js"></script>
   </body>
 </html>
 

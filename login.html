@@ -40,6 +40,8 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-storage.js"></script>
+
 
     <script>
         var firebaseConfig = {
@@ -57,7 +59,7 @@
         firebase.analytics();
         // Initialize database
         const db = firebase.firestore();
-        db.settings({timestampsInSnapshots: true});
+        //db.settings({timestampsInSnapshots: true});
         //Initializes authentication
         const auth = firebase.auth();
     </script>

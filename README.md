@@ -21,5 +21,6 @@ Contributors to this project:
 - Alayna Nguyen: https://github.com/alaynamnguyen
 - Geoffrey Wu: https://github.com/thedoge42
 - William Zhang: https://github.com/Phytal
+- Dhruv Rawat (owner of this repository): https://github.com/Pop0097
 
 Devpost Link: 

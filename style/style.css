@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
 body {
     padding-top: 70px;
     background: #F9FFFF; /* fallback for old browsers */
@@ -14,77 +15,3 @@ body {
 h1 {
     text-align: center;
 }
-
-.container {
-    margin-left: 0px;
-    margin-right: 0px;
-}
-
-.container .post img {
-    height: 250px;
-    width: 259px;
-    border-radius: 50%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.container .post {
-    background-color: #d1ffcf;
-    padding: 15px;
-    margin: 30px;
-}
-
-.title-text {
-    text-align: center;
-}
-
-.navbar {
-    width: 100%;
-    background-color: #7AC9AB;
-    overflow: auto;
-  }
-
-/*
-body {
-    background-color: #b0b0b0;
-}
-
-h1 {
-    color: #0400b0;
-    font-family: Tahoma, Geneva, sans-serif;
-    display: inline-block;
-}
-
-.page-header {
-    text-align: center;
-}
-
-.login {
-    text-align: right;
-    font-size: 18px;
-}
-
-.search-bar {
-    margin: auto;
-    width: 60%;
-    padding: 5px;
-}
-
-#search-bar {
-    width: 90%;
-    margin: auto;
-}
-
-#login-button {
-    text-align: right;
-}
-
-img {
-    position: relative;
-    left: 20%;
-
-    width: 25%;
-    height: 25%;
-}
-*/

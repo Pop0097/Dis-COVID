@@ -2,7 +2,7 @@ var currentUserEmail = "";
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         currentUserEmail = user.email;
-    }
+    } 
 });
 
 

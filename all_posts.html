@@ -4,6 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style/style.css">
         <link rel="stylesheet" href="style/login.css">
+        <link rel="stylesheet" href="style/all_posts.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
             integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
             crossorigin="anonymous">
@@ -61,6 +62,17 @@
                 <a href="create_post.html" id="image-link"><img src="images/create-post-image.png"></a>       
             </div>
         </div>
+        
+        <!-- The Modal -->
+        <div id="postModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h4>Title</h4>
+                <img src="">
+                <p>Description</p>
+            </div>
+        </div>
 
         <h1 id="post-result-header"></h1>
         <div class="container container-fluid">
@@ -103,7 +115,7 @@
                     let buttonT3 = document.createElement('button');
 
                     div.className = "col-12 col-lg-4 justify-content-center";
-                    a.id = "post-link";
+                    a.className = "post-link";
                     button.className = "post center";
                     buttonT1.className = "tags";
                     buttonT2.className = "tags";
@@ -125,7 +137,7 @@
                     {
                         buttonT3.style = "display: none;";
                     }
-                    a.href = doc.data().img_url;
+                    //a.href = doc.data().img_url;
                     h2.innerHTML = doc.data().subject;
                     image.src = doc.data().img_url;
                     h6.innerHTML = "Created by: " + doc.data().user;
@@ -157,6 +169,7 @@
                         snapshot.forEach(doc => {
                         console.log(doc.id, '=>', doc.data().img_url);
                         renderTest(doc);
+                        createOnClick();
                         });
                     })
                     .catch(err => {
@@ -170,6 +183,7 @@
                         snapshot.forEach(doc => {
                         console.log(doc.id, '=>', doc.data().img_url);
                         renderTest(doc);
+                        createOnClick();
                         });
                     })
                     .catch(err => {
@@ -180,6 +194,7 @@
                         snapshot.forEach(doc => {
                         console.log(doc.id, '=>', doc.data().img_url);
                         renderTest(doc);
+                        createOnClick();
                         });
                     })
                     .catch(err => {
@@ -190,15 +205,81 @@
                         snapshot.forEach(doc => {
                         console.log(doc.id, '=>', doc.data().img_url);
                         renderTest(doc);
+                        createOnClick();
                         });
                     })
                     .catch(err => {
                         console.log('Error getting documents', err);
                     });
                 }
+                
             }
 
+            function createOnClick() {
+                var modal = document.getElementById("postModal");
+                console.log("got modal", modal)
+                // Get the button that opens the modal
+                var links = document.getElementsByClassName("post-link");
+                console.log("got button", links);
+                
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+                console.log("got span")
+                
+                for(var i = 0; i < links.length; i++) {
+                    // When the user clicks the button, open the modal 
+                    links[i].onclick = function() {
+                    modal.style.display = "block";
+                    console.log("button " + i + " is clicked");
+                    }
+                }
+                
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+                
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            
+            }
         </script>
+
+        <!-- <script>
+            // Get the modal
+            var modal = document.getElementById("postModal");
+            
+            // Get the button that opens the modal
+            var links = document.getElementsByClassName("post-link");
+            console.log("stuff ", links);
+            
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            
+            for(var i = 0; i < links.length; i++) {
+                // When the user clicks the button, open the modal 
+                links[i].onclick = function() {
+                modal.style.display = "block";
+                console.log("button " + i + " is clicked");
+                }
+            }
+            
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+            modal.style.display = "none";
+            }
+            
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            }
+        </script> -->
 
         <script src="js/logout.js"></script>
         <script src="js/logo.js"></script>

@@ -62,10 +62,10 @@ h1 {
 .container .tags { 
     color: black;
     background-color: #7AC9AB;
-    border-radius: 10%;
-    margin: 10px;
+    border-radius: 5px;
+    margin: 2%;
     font-size: 14px;
-    padding: 0;
+    padding: 2%;
 }
 
 .container button:hover {

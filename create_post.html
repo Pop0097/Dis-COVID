@@ -8,44 +8,6 @@
     <link rel="stylesheet" href="style/create_post.css">
     <script src="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.js"></script>
     <link rel="stylesheet" type="text/css" href="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.css" />
-  </head>
-  <body>
-    <h1>Dis-COVID</h1>
-    <a href="index.html">Go to Home</a><br>
-    <a href="#" id="logout">Logout</a><br>
-    <a id="login-button" href="login.html">Log in</a><br>
-
-    <form id="add-test-form" class="add-post-form">
-        <label>Day:</label><input type="text" name="day" placeholder="Enter the day" required><br>
-        <label>Time:</label><input type="text" name="time" placeholder="Enter the time" required><br>
-        <label>Select Tags (min 1):</label><br>
-        <select name="tag1" id="tag-input">
-            <option value="Default">Select a tag</option>
-            <option value="Baking">Baking</option>
-            <option value="Sculpting">Sculpting</option>
-            <option value="Cake">Cake</option>
-            <option value="Coding">Coding</option>
-        </select><br>
-        <select name="tag2" id="tag-input">
-          <option value="Default">Select a tag</option>
-          <option value="Baking">Baking</option>
-          <option value="Sculpting">Sculpting</option>
-          <option value="Cake">Cake</option>
-          <option value="Coding">Coding</option>
-        </select><br>
-        <select name="tag3" id="tag-input">
-          <option value="Default">Select a tag</option>
-          <option value="Baking">Baking</option>
-          <option value="Sculpting">Sculpting</option>
-          <option value="Cake">Cake</option>
-          <option value="Coding">Coding</option>
-      </select><br>
-      <label>Upload an Image:</label><br><input type="file" value="upload" id="fileButton"><br>
-        <button>Add Test element</button>
-    </form>
-    
-    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
 
@@ -87,7 +49,6 @@
         // Listens for file selection
         fileButton.addEventListener('change', function(e) {
           uploadImage(e);
-          
         });
         
         firebase.analytics();
@@ -97,6 +58,53 @@
         //Initializes authentication
         const auth = firebase.auth();
     </script>
+
+    <script>
+      // listen for auth status changes
+      firebase.auth().onAuthStateChanged(user => {
+          if (user) {
+              console.log('Not redirecting');
+          } else {
+              console.log('Redirecting to index.html');
+              window.location.replace("index.html");
+          }
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Dis-COVID</h1>
+    <a href="index.html">Go to Home</a><br>
+    <a href="#" id="logout">Logout</a><br>
+    <a id="login-button" href="login.html">Log in</a><br>
+
+    <form id="add-test-form" class="add-post-form">
+        <label>Day:</label><input type="text" name="day" placeholder="Enter the day" required><br>
+        <label>Time:</label><input type="text" name="time" placeholder="Enter the time" required><br>
+        <label>Select Tags (min 1):</label><br>
+        <select name="tag1" id="tag-input">
+            <option value="Default">Select a tag</option>
+            <option value="Baking">Baking</option>
+            <option value="Sculpting">Sculpting</option>
+            <option value="Cake">Cooking</option>
+            <option value="Coding">Coding</option>
+        </select><br>
+        <select name="tag2" id="tag-input">
+          <option value="Default">Select a tag</option>
+          <option value="Baking">Baking</option>
+          <option value="Sculpting">Sculpting</option>
+          <option value="Cake">Cooking</option>
+          <option value="Coding">Coding</option>
+        </select><br>
+        <select name="tag3" id="tag-input">
+          <option value="Default">Select a tag</option>
+          <option value="Baking">Baking</option>
+          <option value="Sculpting">Sculpting</option>
+          <option value="Cake">Cooking</option>
+          <option value="Coding">Coding</option>
+      </select><br>
+      <label>Upload an Image:</label><br><input type="file" value="upload" id="fileButton"><br>
+        <button>Add Test element</button>
+    </form>
     
     <script src="js/app.js"></script>
     <script src="js/logout.js"></script>

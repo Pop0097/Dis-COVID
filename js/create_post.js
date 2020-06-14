@@ -81,6 +81,8 @@ form.addEventListener('submit', function(e) {
             tag3: tagThree,
             subject: subj,
             message: msg,
+            likes: 0,
+            likes_users: [""],
         }, {merge: true});
     });
 
@@ -92,7 +94,8 @@ form.addEventListener('submit', function(e) {
         post_counter: post_counter,
     });
 
-    timer = window.setTimeout(goToPosts(), 2000);
+    //after 2 seconds, redirect the user to 
+    timer = window.setTimeout(goToPosts(), 2000); 
 }, false);
 
 function goToPosts(){

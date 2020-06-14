@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-    <link rel="stylesheet" href="style/style.css">
+    <title>Create a New Post</title>
+    <link rel="stylesheet" href="style/create_post.css">
     <script src="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.css" />
   </head>
   <body>
     <h1>Dis-COVID</h1>
 
-    <a href="index.html">Go to Home</a>
+    <a href="index.html">Go to Home</a><br>
     <a href="#" id="logout">Logout</a>
 
 
@@ -36,6 +36,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
 
     <script>
+      import 'firebase/storage';
       var firebaseConfig = {
           apiKey: "AIzaSyDAquTNfqjwa8bMBSzmyO_sEaeKhhq0rWQ",
           authDomain: "dis-covid.firebaseapp.com",
@@ -50,6 +51,7 @@
         firebase.initializeApp(firebaseConfig);
 
         // Elements for file upload START OF SECTION
+        const storage = firebase.storage();
         var uploader = document.getElementById('uploader');
         var fileButton = document.getElementById('fileButton');
 
@@ -87,6 +89,7 @@
     <script src="js/app.js"></script>
     <script src="js/logout.js"></script>
     <script src="js/user_status.js"></script>
+    <script src="js/create_post.js"></script>
   </body>
 </html>
 

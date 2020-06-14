@@ -1,8 +1,9 @@
-var user = firebase.auth().currentUser;
-
-if(user){
-    console.log("user signed in!!!");
-}
+var currentUserEmail = "";
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        currentUserEmail = user.email;
+    }
+});
 
 /* Test code to get and display data from firestore */
 //element in index.html that is present onload
@@ -45,10 +46,12 @@ function renderTest(doc){
 
 //get data from firestore
 //.where('day', '==', 'Monday') --> .where() is used for queries (first parameter is field. second parameter is operation. third paraeter is value)
+/*
 db.collection('test').orderBy('time').get().then((snapshot)=>{ //get() returns a promise, so we need to use .then(). 
     snapshot.docs.forEach(doc => {
     //console.log(doc.data()); //doc.data() used to view specific data
     renderTest(doc); 
     })
 })
+*/
 

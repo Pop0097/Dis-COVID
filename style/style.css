@@ -20,6 +20,23 @@ h1 {
     margin-right: 0px;
 }
 
+.container .post {
+    height: 90%;
+    min-width: 300px;
+}
+
+.container .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media(max-width: 1000px){
+    .container .post {
+        width: 400px;
+    }
+}
+
 .container .post img {
     height: 250px;
     width: 250px;
@@ -163,7 +180,6 @@ h1 {
         width: 30%;
     }
 }
-
 
 /* Code for profile.html */
 .user-information-field{

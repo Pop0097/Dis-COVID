@@ -1,10 +1,13 @@
 
 var currentUserEmail = "";
+var currentUsername = "";
 var post_counter = 0;
+var timer;
 
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         currentUserEmail = user.email;
+        currentUsername = user.displayName;
         console.log(currentUserEmail, "\nuser logged in:\n", user);
         getPostDocNumber();
     }
@@ -53,11 +56,12 @@ form.addEventListener('submit', function(e) {
     var tagTwo = form.tag2.value;
     var tagThree = form.tag3.value;
 
+    //if tags are identical, they are made so that they are not
     if(tagOne == tagTwo || tagTwo == tagThree) {
-        form.tag2.value = "Default";
+        tagTwo = "Default";
     }
     if(tagOne == tagThree) {
-        form.tag3.value = "Default";
+        tagThree = "Default";
     }
 
     var subj = form.subject.value;
@@ -69,7 +73,8 @@ form.addEventListener('submit', function(e) {
         //console.log(currentUserEmail + "." + post_counter);
         console.log(url);
         firebase.firestore().collection('posts').doc(currentUserEmail + "." + post_counter).set({
-            user: currentUserEmail,
+            user: currentUsername,
+            user_email: currentUserEmail,
             img_url: url,
             tag1: tagOne,
             tag2: tagTwo,
@@ -87,5 +92,11 @@ form.addEventListener('submit', function(e) {
         post_counter: post_counter,
     });
 
-    //window.location.replace("all_posts.html"); //redirects user to home page
+    timer = window.setTimeout(goToPosts(), 2000);
 }, false);
+
+function goToPosts(){
+    window.clearTimeout(timer);
+    console.log('here');
+    window.location.replace("all_posts.html"); //redirects user to home page
+}

@@ -3,6 +3,7 @@
         <title>Dis-COVID</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="style/login.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
             integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
             crossorigin="anonymous">
@@ -62,7 +63,7 @@
         </div>
 
         <h1 id="post-result-header"></h1>
-        <div class="container">
+        <div class="container container-fluid">
             <div class="row" id="all-posts"></div>
         </div>
 
@@ -73,13 +74,19 @@
             search_bar.addEventListener("change", function(e) {
                 e.preventDefault(); //prevent refresh
                 tag = search_bar.value;
-
                 console.log(tag);
-
-                displayAllPosts(tag);
+                displayAllPosts(titleCase(tag));
             });
 
             displayAllPosts("");
+
+            function titleCase(str) {
+                str = str.toLowerCase().split(' ');
+                for (var i = 0; i < str.length; i++) {
+                    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+                }
+                return str.join(' ');
+            }
 
             function displayAllPosts(tag) {
                 const testList = document.querySelector('#all-posts');
@@ -97,7 +104,7 @@
 
                     div.className = "col-12 col-lg-4 justify-content-center";
                     a.id = "post-link";
-                    button.className = "post";
+                    button.className = "post center";
                     buttonT1.className = "tags";
                     buttonT2.className = "tags";
                     buttonT3.className = "tags";
@@ -157,7 +164,7 @@
                     });
                 } else {
                     document.getElementById("post-result-header").innerHTML = 
-                    "These are the results for: " + tag;
+                    "These are the posts that include the tag: " + tag;
                     console.log("you searched something");
                     db.collection('posts').where('tag1', '==', tag).get().then(snapshot => {
                         snapshot.forEach(doc => {

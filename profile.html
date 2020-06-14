@@ -157,8 +157,8 @@
                 let buttonT3 = document.createElement('button');
 
                 div.className = "col-12 col-lg-4 justify-content-center";
-                a.id = "post-link";
-                button.className = "post";
+                a.id = "post-link center";
+                button.className = "post center";
                 buttonT1.className = "tags";
                 buttonT2.className = "tags";
                 buttonT3.className = "tags";
@@ -187,10 +187,17 @@
                 button.appendChild(h2);
                 button.appendChild(image);
                 button.appendChild(h6);
-                button.appendChild(buttonT1);
-                button.appendChild(buttonT2);
-                button.appendChild(buttonT3);
-                
+
+                //only adds buttons if the tag is not "Default"
+                if(doc.data().tag1 != "Default"){
+                    button.appendChild(buttonT1);
+                }
+                if(doc.data().tag2 != "Default"){
+                    button.appendChild(buttonT2);
+                }
+                if(doc.data().tag3 != "Default"){
+                    button.appendChild(buttonT3);
+                }
                 a.appendChild(button);
 
                 div.appendChild(a);

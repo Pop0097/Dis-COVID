@@ -50,7 +50,6 @@ function renderTest(doc){
     //}
 }
 
-
 //get data from firestore
 //.where('day', '==', 'Monday') --> .where() is used for queries (first parameter is field. second parameter is operation. third paraeter is value)
 /*

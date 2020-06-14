@@ -10,6 +10,9 @@
     
     <a href="index.html">Go to Home</a>
 
+    <ul id="all-posts">
+    </ul>
+
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -35,25 +38,40 @@
             measurementId: "G-ZNYK27S4Z4"
         };
         
+        const testList = document.querySelector('#all-posts');
+
+        function renderTest(doc) {
+            //create elements in which data will be displayed
+            let li = document.createElement('li');
+            let image = document.createElement('img');
+        
+            li.setAttribute('data-id', doc.id); //first parameter is attribute name, id property is second parameter (we use document id in firestore for this)
+            
+            image.src = doc.data().img_url;
+            //image.src = "https://firebasestorage.googleapis.com/v0/b/dis-covid.appspot.com/o/images%2Famnguyen%40stu.naperville203.org%2Fblue.png?alt=media&token=a1245c01-5731-4ae1-8313-ee1498384447";
+
+            li.appendChild(image);
+            
+            //append new created list to the element that is present in index.html onload
+            testList.appendChild(li);
+        }
+
         firebase.initializeApp(firebaseConfig);
-
-        /*
+        
         const db = firebase.firestore();
-
-        let cityRef = db.collection('posts').doc('SF');
-        let getDoc = cityRef.get()
-            .then(doc => {
-                if (!doc.exists) {
-                console.log('No such document!');
-                } else {
-                console.log('Document data:', doc.data());
-                }
-            })
-            .catch(err => {
-                console.log('Error getting document', err);
+        
+        let postRef = db.collection('posts');
+        let allPosts = postRef.get().then(snapshot => {
+            snapshot.forEach(doc => {
+            console.log(doc.id, '=>', doc.data().img_url);
+            //document.getElementById("cool").src = doc.data().img_url;
+            
+            renderTest(doc);
+            });
+        })
+        .catch(err => {
+            console.log('Error getting documents', err);
         });
-        */
-
     </script>
 
 </body>

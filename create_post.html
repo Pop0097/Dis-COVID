@@ -86,24 +86,7 @@
         
         // Listens for file selection
         fileButton.addEventListener('change', function(e) {
-          // Gets file
-          var file = e.target.files[0];
-          // Creates a storage reference ('folder_name/file_name' is how it's stored)
-          var storageRef = firebase.storage().ref('images/' + currentUserEmail + '/' + file.name);
-          // Upload file
-          var img_src = "1";
-          storageRef.getDownloadURL().then(function(url) {
-            // Insert url into an <img> tag to "download"
-            console.log(url);
-            firebase.firestore().collection('posts').add({
-              user: currentUserEmail,
-              img_url: url,
-            });
-          });
-
-          var task = storageRef.put(file);
-          //console.log("uploaded");
-          // Update progress bar
+          uploadImage(e);
           
         });
         

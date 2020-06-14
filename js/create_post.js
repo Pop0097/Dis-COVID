@@ -31,3 +31,23 @@ form.addEventListener('submit', function(e) {
     form.day.value = "";
     form.time.value = "";
 }, false);
+
+function uploadImage(e) {
+    // Gets file
+    var file = e.target.files[0];
+    // Creates a storage reference ('folder_name/file_name' is how it's stored)
+    var storageRef = firebase.storage().ref('images/' + currentUserEmail + '/' + file.name);
+    // Upload file
+    var myUrl = "";
+    storageRef.getDownloadURL().then(function(url) {
+      // Insert url into an <img> tag to "download"
+      console.log(url);
+      console.log("Yasss");
+      firebase.firestore().collection('posts').add({
+        user: currentUserEmail,
+        img_url: url,
+      });
+    });
+
+    var task = storageRef.put(file);
+}

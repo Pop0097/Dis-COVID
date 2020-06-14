@@ -16,37 +16,10 @@
         <!-- Add Firebase products that you want to use -->
         <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
-        <script>
-            firebaseConfig = {
-                apiKey: "AIzaSyDAquTNfqjwa8bMBSzmyO_sEaeKhhq0rWQ",
-                authDomain: "dis-covid.firebaseapp.com",
-                databaseURL: "https://dis-covid.firebaseio.com",
-                projectId: "dis-covid",
-                storageBucket: "dis-covid.appspot.com",
-                messagingSenderId: "93140684291",
-                appId: "1:93140684291:web:b740d37d012982f706c836",
-                measurementId: "G-ZNYK27S4Z4"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            firebase.analytics();
-            // Initialize database
-            const db = firebase.firestore();
-            //db.settings({timestampsInSnapshots: true});
-            //Initializes authentication
-            const auth = firebase.auth();
-
-            //get user information
-            firebase.auth().onAuthStateChanged(user => {
-                if (user) {
-                    console.log('Not redirecting');
-                } else { //if user not logged in, page redirects
-                    console.log('Redirecting to index.html');
-                    window.location.replace("index.html");
-                }
-            });
-        </script>
-
+        
+        <!-- Initializes Firebase and checks if user is logged in -->
+        <script src="js/initialization.js"></script>
+        <script src="js/check_login_status.js"></script>
     </head>
     <body>
     <div class="navbar" style="margin-bottom: 30px;">
@@ -118,7 +91,7 @@
         //get user information
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
-                console.log('user logged in: ', user);
+                //console.log('user logged in: ', user);
                 //get user email and username
                 var userEmail = user.email;
                 var userUsername = user.displayName; 
@@ -126,13 +99,13 @@
                 displayUserInformation(userEmail, userUsername); 
                 displayUserPosts(userEmail, userUsername);
             } else { //if user not logged in, page redirects
-                console.log('Redirecting to index.html');
+                //console.log('Redirecting to index.html');
                 window.location.replace("index.html");
             }
         });
 
         function displayUserInformation(userEmail, userUsername){
-            console.log(userUsername, " ", userEmail);
+            //console.log(userUsername, " ", userEmail);
             if(userUsername){
                 document.getElementById('user-username').innerHTML = userUsername; //prints username if defined
             }

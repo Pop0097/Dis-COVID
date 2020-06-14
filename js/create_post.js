@@ -1,5 +1,7 @@
+
 var currentUserEmail = "";
 var post_counter = 0;
+
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         currentUserEmail = user.email;
@@ -32,23 +34,11 @@ document.getElementById('fileButton').addEventListener('change', function(e) {
     // Gets file
     var file = e.target.files[0];
     // Creates a storage reference ('folder_name/file_name' is how it's stored)
-    var storageRef = firebase.storage().ref('images/' + currentUserEmail + '/' + file.name);
+    //var storageRef = firebase.storage().ref();
+    //var imageRef = storageRef.child(file.name);
+    //var userImageRef = storageRef.child(currentUserEmail + "/" + file.name);
+    var storageRef = firebase.storage().ref('images/' + currentUserEmail + '/' + post_counter);
     // Upload file
-    var myUrl = "";
-    storageRef.getDownloadURL().then(function(url) {
-        // Insert url into an <img> tag to "download"
-        //console.log(currentUserEmail + "." + post_counter);
-        firebase.firestore().collection('posts').doc(currentUserEmail + "." + post_counter).set({
-            user: currentUserEmail,
-            img_url: url,
-            tag1: null,
-            tag2: null,
-            tag3: null,
-            subject: null,
-            message: null,
-        }, {merge: true});
-    });
-
     var task = storageRef.put(file); //uploads image to storage
 
     console.log("image uploaded");
@@ -66,18 +56,35 @@ form.addEventListener('submit', function(e) {
     var tagTwo = form.tag2.value;
     var tagThree = form.tag3.value;
 
+    if(tagOne == tagTwo || tagTwo == tagThree) {
+        form.tag2.value = "Default";
+    }
+    if(tagOne == tagThree) {
+        form.tag3.value = "Default";
+    }
+
     var subj = form.subject.value;
     var msg = form.message.value;
-    firebase.firestore().collection('posts').doc(currentUserEmail + "." + post_counter).set({
-        tag1: tagOne,
-        tag2: tagTwo,
-        tag3: tagThree,
-        subject: subj,
-        message: msg,
-    }, {merge: true});
 
-    console.log("submited");
+    var storageRef = firebase.storage().ref('images/' + currentUserEmail + '/' + post_counter);
+    storageRef.getDownloadURL().then(function(url) {
+        // Insert url into an <img> tag to "download"
+        //console.log(currentUserEmail + "." + post_counter);
+        console.log(url);
+        firebase.firestore().collection('posts').doc(currentUserEmail + "." + post_counter).set({
+            user: currentUserEmail,
+            img_url: url,
+            tag1: tagOne,
+            tag2: tagTwo,
+            tag3: tagThree,
+            subject: subj,
+            message: msg,
+        }, {merge: true});
+    });
 
+    console.log("submitted");
+
+    //Increases post counter by one 
     post_counter = post_counter + 1;
     firebase.firestore().collection('users').doc(currentUserEmail).set({
         post_counter: post_counter,

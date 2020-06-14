@@ -1,4 +1,11 @@
 
+.login-page {
+  width: 360px;
+}
+
+.signup-page{
+  width: 360px;
+}
 
 .form {
   position: relative;
@@ -45,7 +52,7 @@
   height: 40px;
   border: 0;
   margin: 0 0 15px;
-  padding: 15px;
+  padding: 5px;
   box-sizing: border-box;
   font-size: 14px;
 }

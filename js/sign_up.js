@@ -15,7 +15,7 @@ signupForm.addEventListener('submit', function(e){
     });
 }, false);
 
-function postActions(){
+function postActions() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             const userName = signupForm.name.value;

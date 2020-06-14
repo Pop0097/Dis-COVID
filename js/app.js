@@ -4,9 +4,11 @@ firebase.auth().onAuthStateChanged(user => {
         currentUserEmail = user.email;
         document.getElementById('logout').style.display = 'inline';
         document.getElementById('login-button').style.display = 'none';
+        document.getElementById('signup-button').style.display = 'none';
     } else {
         document.getElementById('logout').style.display = 'none';
         document.getElementById('login-button').style.display = 'inline';
+        document.getElementById('signup-button').style.display = 'inline';
     }
 });
 

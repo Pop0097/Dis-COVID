@@ -2,11 +2,53 @@
 <head>
     <title>All posts!</title>
     <link rel="stylesheet" href="style/all_posts.css">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.css" />
 </head>
 
 <body>
     <h1>Dis-COVID</h1>
-
+    
     <a href="index.html">Go to Home</a>
+
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-storage.js"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDAquTNfqjwa8bMBSzmyO_sEaeKhhq0rWQ",
+            authDomain: "dis-covid.firebaseapp.com",
+            databaseURL: "https://dis-covid.firebaseio.com",
+            projectId: "dis-covid",
+            storageBucket: "dis-covid.appspot.com",
+            messagingSenderId: "93140684291",
+            appId: "1:93140684291:web:b740d37d012982f706c836",
+            measurementId: "G-ZNYK27S4Z4"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+
+        //var database = firebase.firestore().collection('posts');
+
+        var postsRef =  firebase.firestore().collection('posts');
+            postsRef.on('value', function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                var childData = childSnapshot.val();
+                console.log(childData);
+            });
+        });
+
+
+    </script>
+
 </body>
 

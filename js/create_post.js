@@ -1,7 +1,7 @@
-var currentUserEmail = "";
+var currentUsername= "";
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
-        currentUserEmail = user.email;
+        currentUsername = user.displayName;
         document.getElementById('logout').style.visibility = 'visible';
     } else {
         document.getElementById('logout').style.visibility = 'hidden';
@@ -10,7 +10,7 @@ firebase.auth().onAuthStateChanged(user => {
 
 /* Test code to add data to firestore */
 //create a constant to represent the form in which data is inputted 
-const form = document.querySelector('#add-test-form');
+const form = document.querySelector('#add-post-form');
 
 //listen for a submit event when the user clicks "submit" on the form
 form.addEventListener('submit', function(e) {
@@ -26,7 +26,7 @@ form.addEventListener('submit', function(e) {
         tag1: tagOne,
         tag2: tagTwo,
         tag3: tagThree,
-        userID: currentUserEmail,
+        username: currentUsername,
     });
     form.day.value = "";
     form.time.value = "";

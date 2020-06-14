@@ -12,12 +12,12 @@
     <h1>Dis-COVID</h1>
 
     <a href="index.html">Go to Home</a><br>
-    <a href="#" id="logout">Logout</a>
+    <a href="#" id="logout">Logout</a><br>
     <a id="login-button" href="login.html">Log in</a><br>
 
-    <form id="add-test-form" class="add-test-form">
-        <label>Day:</label><input type="text" name="day" placeholder="day" required><br>
-        <label>Time:</label><input type="text" name="time" placeholder="1.2" required><br>
+    <form id="add-test-form" class="add-post-form">
+        <label>Day:</label><input type="text" name="day" placeholder="Enter the day" required><br>
+        <label>Time:</label><input type="text" name="time" placeholder="Enter the time" required><br>
         <label>Select Tags (min 1):</label><br>
         <select name="tag1" id="tag-input">
             <option value="Default">Select a tag</option>
@@ -32,26 +32,14 @@
           <option value="Sculpting">Sculpting</option>
           <option value="Cake">Cake</option>
           <option value="Coding">Coding</option>
+        </select><br>
+        <select name="tag3" id="tag-input">
+          <option value="Default">Select a tag</option>
+          <option value="Baking">Baking</option>
+          <option value="Sculpting">Sculpting</option>
+          <option value="Cake">Cake</option>
+          <option value="Coding">Coding</option>
       </select><br>
-      <select name="tag3" id="tag-input">
-        <option value="Default">Select a tag</option>
-        <option value="Baking">Baking</option>
-        <option value="Sculpting">Sculpting</option>
-        <option value="Cake">Cake</option>
-        <option value="Coding">Coding</option>
-    </select><br>
-        <!--
-          <input list="tags" name="tag-1" id="tag-input" value="Select a tag">
-        <input list="tags" name="tag-2" id="tag-input" value="Select a tag">
-        <input list="tags" name="tag-3" id="tag-input" value="Select a tag">
-        <datalist id="tags">
-          <option value="Baking">
-          <option value="Sculpting">
-          <option value="Cake">
-          <option value="Hackathon">
-          <option value="Coding">
-        </datalist>
-      -->
       <label>Upload an Image:</label><br><input type="file" value="upload" id="fileButton"><br>
         <button>Add Test element</button>
     </form>
@@ -103,15 +91,14 @@
           // Creates a storage reference ('folder_name/file_name' is how it's stored)
           var storageRef = firebase.storage().ref('images/' + currentUserEmail + '/' + file.name);
           // Upload file
-          var img_src;
+          var img_src = "1";
           storageRef.getDownloadURL().then(function(url) {
             // Insert url into an <img> tag to "download"
             console.log(url);
-            img_src = url;
-          });
-
-          firebase.firestore().collection('posts').add({
-            img_url: img_src,
+            firebase.firestore().collection('posts').add({
+              user: currentUserEmail,
+              img_url: url,
+            });
           });
 
           var task = storageRef.put(file);

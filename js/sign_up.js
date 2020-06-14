@@ -11,6 +11,34 @@ signupForm.addEventListener('submit', function(e){
     // sign up the user
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
         // close the signup modal & reset form
-        signupForm.reset();
+        postActions(); 
     });
 }, false);
+
+function postActions(){
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            const userName = signupForm.name.value;
+            console.log(userName);
+
+            user.updateProfile({
+                displayName: userName
+            }).then(function() {
+                console.log("username entered!");
+              }).catch(function(error) {
+                console.log("username NOT entered!");
+              });;
+            
+            user.sendEmailVerification().then(function() {
+            console.log("Verification email sent!");
+            }).catch(function(error) {
+                console.log("Verification email NOT sent!");
+            });
+            signupForm.reset();
+        } else {
+            console.log("Post signup actions not performed");
+        }
+    });
+}
+
+

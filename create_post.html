@@ -9,6 +9,7 @@
       crossorigin="anonymous">
     <link rel="stylesheet" href="style/create_post.css">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/login.css">
 
     <script src="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.js"></script>
     
@@ -71,7 +72,7 @@
   </head>
 
   <body>
-    <div class="navbar">
+    <div class="navbar" style="margin-bottom:30px;">
         <a href="all_posts.html" class="left nav-item help" id="indexHelp"><img src="images/logo-long.png" id="logo-image"></a>
         <input type="search" placeholder="Search">
         <!--<a href="profile.html" id="logout-link"><img src="images/profile.png" id="logout-img"></a>
@@ -93,11 +94,11 @@
     <section class="form-area">
       <div class="container-fluid">
         <div class="form-container center">
-          <form id="add-post-form" class="add-post-form">
+          <form id="add-post-form" class="form add-post-form">
             <div class="row">
               <div class="col-12 form-input text-center">
                 <label>Subject:</label><br>
-                <input class="center" type="text" name="subject" placeholder="Enter your subject" required><br>
+                <input class="center" type="text" name="subject" placeholder="Enter your subject" required>
               </div>
               <div class="col-12 form-input text-center">
                 <label>Message:</label><br>
@@ -108,7 +109,7 @@
               <div class="col-12 form-input text-center">
                 <label>Select Tags (min 1):</label><br>
               </div>
-              <div class="col-12 col-sm-4 form-selector">
+              <div class="col-12 form-selector">
                 <select class="center" name="tag1" id="tag-input">
                   <option value="Default">Select a tag</option>
                   <option value="Baking">Baking</option>
@@ -117,7 +118,7 @@
                   <option value="Coding">Coding</option>
                 </select> <br>
               </div>
-              <div class="col-12 col-sm-4 form-selector">
+              <div class="col-12 form-selector">
                 <select class="center" name="tag2" id="tag-input">
                   <option value="Default">Select a tag</option>
                   <option value="Baking">Baking</option>
@@ -126,22 +127,22 @@
                   <option value="Coding">Coding</option>
                 </select> <br>
               </div>
-              <div class="col-12 col-sm-4 form-selector">
+              <div class="col-12 form-selector">
                 <select class="center" name="tag3" id="tag-input">
                   <option value="Default">Select a tag</option>
                   <option value="Baking">Baking</option>
                   <option value="Sculpting">Sculpting</option>
                   <option value="Cake">Cooking</option>
                   <option value="Coding">Coding</option>
-                </select> <br>
+                </select> 
               </div>
               <div class = "col-12 form-picture-input text-center">
                 <label>Upload an Image:</label><br>
-                <input class="center" type="file" value="upload" id="fileButton">
+                <input name="img-upload" class="center" type="file" value="upload" id="fileButton">
               </div>
               <div class="col-12 text-center">
                 <br>
-                <button id="create-post-button"><a href="all_posts.html">Create Post</a></button>
+                <button id="create-post-button">Create Post</button>
                 <p></p>
               </div>
             </div>

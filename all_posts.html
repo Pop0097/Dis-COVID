@@ -26,7 +26,7 @@
                 messagingSenderId: "93140684291",
                 appId: "1:93140684291:web:b740d37d012982f706c836",
                 measurementId: "G-ZNYK27S4Z4"
-            }; 
+            };
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
             firebase.analytics();
@@ -53,61 +53,112 @@
     <body>
         <div class="navbar">
             <a href="all_posts.html" class="left nav-item help" id="indexHelp"><img src="images/logo-long.png" id="logo-image"></a>
-            <input type="search" placeholder="Search">
+            <input id="search-bar" type="search" placeholder="Search">
             <!--<a href="profile.html" id="logout-link"><img src="images/profile.png" id="logout-img"></a>
             <a href="favorites.html"><img src="images/heart.png"></a>-->
             <a href="create_post.html" ><img src="images/create-post-image.png"></a>
             <a href="index.html" ><img src="images/login.png" id="logout"></a>
         </div>
-        <h1 id="post-result-header">These are the results for: </h1>
+        <h1 id="post-result-header"></h1>
         <div class="container">
-            <div class="row" id="all-posts">
-                
-            </div>
+            <div class="row" id="all-posts"></div>
         </div>
 
-        <!--Displays all of the posts in 'posts' database-->
+        <!--Displays all of the posts that are currently in the 'posts' database-->
         <script>
-            const testList = document.querySelector('#all-posts');
+            const search_bar = document.getElementById("search-bar");
+            var tag = "";
+            search_bar.addEventListener("change", function(e) {
+                e.preventDefault(); //prevent refresh
+                tag = search_bar.value;
 
-            function renderTest(doc) {
-                let div = document.createElement('div');
-                let a = document.createElement('a');
-                let button = document.createElement('button');
-                let h2 = document.createElement('h2');
-                let image = document.createElement('img');
-                let h6 = document.createElement('h6');
+                console.log(tag);
 
-                div.className = "col-12 col-lg-4 justify-content-center";
-                a.id = "post-link";
-                button.className = "post";
-                image.id = "post-one-img";
-
-                a.href = doc.data().img_url;
-                h2.innerHTML = doc.data().title;
-                image.src = doc.data().img_url;
-                h6.innerHTML = "Created by: " + doc.data().user;
-
-                button.appendChild(h2);
-                button.appendChild(image);
-                button.appendChild(h6);
-                
-                a.appendChild(button);
-
-                div.appendChild(a);
-                
-                testList.appendChild(div);
-            }
-            
-            let allPosts = db.collection('posts').get().then(snapshot => {
-                snapshot.forEach(doc => {
-                console.log(doc.id, '=>', doc.data().img_url);
-                renderTest(doc);
-                });
-            })
-            .catch(err => {
-                console.log('Error getting documents', err);
+                displayAllPosts(tag);
             });
+
+            displayAllPosts("");
+
+            function displayAllPosts(tag) {
+                const testList = document.querySelector('#all-posts');
+                testList.innerHTML = "";
+                function renderTest(doc) {
+                    let div = document.createElement('div');
+                    let a = document.createElement('a');
+                    let button = document.createElement('button');
+                    let h2 = document.createElement('h2');
+                    let image = document.createElement('img');
+                    let h6 = document.createElement('h6');
+
+                    div.className = "col-12 col-lg-4 justify-content-center";
+                    a.id = "post-link";
+                    button.className = "post";
+                    image.id = "post-one-img";
+
+                    a.href = doc.data().img_url;
+                    h2.innerHTML = doc.data().title;
+                    image.src = doc.data().img_url;
+                    h6.innerHTML = "Created by: " + doc.data().user;
+
+                    button.appendChild(h2);
+                    button.appendChild(image);
+                    button.appendChild(h6);
+                    
+                    a.appendChild(button);
+
+                    div.appendChild(a);
+                    
+                    testList.appendChild(div);
+                }
+                
+                if (tag.length == 0) {
+                    document.getElementById("post-result-header").innerHTML = 
+                    "All posts:";
+                    db.collection('posts').get().then(snapshot => {
+                        snapshot.forEach(doc => {
+                        console.log(doc.id, '=>', doc.data().img_url);
+                        renderTest(doc);
+                        });
+                    })
+                    .catch(err => {
+                        console.log('Error getting documents', err);
+                    });
+                } else {
+                    document.getElementById("post-result-header").innerHTML = 
+                    "These are the results for: " + tag;
+                    console.log("you searched something");
+                    db.collection('posts').where('tag1', '==', tag).get().then(snapshot => {
+                        snapshot.forEach(doc => {
+                        console.log(doc.id, '=>', doc.data().img_url);
+                        renderTest(doc);
+                        });
+                    })
+                    .catch(err => {
+                        console.log('Error getting documents', err);
+                    });
+
+                    db.collection('posts').where('tag2', '==', tag).get().then(snapshot => {
+                        snapshot.forEach(doc => {
+                        console.log(doc.id, '=>', doc.data().img_url);
+                        renderTest(doc);
+                        });
+                    })
+                    .catch(err => {
+                        console.log('Error getting documents', err);
+                    });
+
+                    db.collection('posts').where('tag3', '==', tag).get().then(snapshot => {
+                        snapshot.forEach(doc => {
+                        console.log(doc.id, '=>', doc.data().img_url);
+                        renderTest(doc);
+                        });
+                    })
+                    .catch(err => {
+                        console.log('Error getting documents', err);
+                    });
+                }
+            }
+
         </script>
 
         <script src="js/logout.js"></script>

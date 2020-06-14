@@ -35,6 +35,7 @@ function postActions(){
                 console.log("Verification email NOT sent!");
             });
             signupForm.reset();
+            window.location.replace("all_posts.html");
         } else {
             console.log("Post signup actions not performed");
         }

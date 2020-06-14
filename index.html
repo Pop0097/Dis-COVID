@@ -62,31 +62,39 @@
 
     </head>
     <body>
-        <div class="navbar">
-            <a href="index.html" class="left nav-item help" id="indexHelp"><img src="images/logo-long.png"></a>
+        <div class="navbar" style="margin-bottom:30px;">
+            <a href="#" class="left nav-item help" id="indexHelp"><img src="images/logo-long.png" id="logo-image-2"></a>
         </div>
 
-        <div class="login-page">
-            <div class="form">
-                <form id="login-form">
-                    <input id="login-email" type="email" placeholder="Email">
-                    <input id="login-password" type="password" placeholder="Password"><br>
+        <section class="title-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 style="margin-bottom: 20px;">Welcome to Dis-COVID</h2>
+                        <p><i>Discover new passions and make boredom dis-appear with Dis-COVID.</i></p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <button id="btnLogin" class="btn btn-action">Login</button>
-                </form>
-                <form action="sign_up.html">
-                    <p class="message">Don't have an account? <a href="sign_up.html">Sign Up Below</a></p>
-                    <button>Sign Up</button>
-                </form>
+        <div class="login-page">
+            <div class="container-fluid">
+                <div class="form center">
+                    <form id="login-form">
+                        <input id="login-email" type="email" placeholder="Email"><br>
+                        <input id="login-password" type="password" placeholder="Password"><br>
+                        <button id="btnLogin" class="btn btn-action">Login</button>
+                    </form>
+                    <form action="sign_up.html">
+                        <p class="message">Don't have an account? <a href="sign_up.html">Sign Up Below</a></p>
+                        <button>Sign Up</button>
+                    </form>
+                </div>
             </div>
         </div>
 
         <script src="js/app.js"></script>
         <script src="js/login.js"></script>
         <script src="js/user_status.js"></script>
-        <script src="js/logout.js"></script>
-
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </body>
 </html>

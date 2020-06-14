@@ -54,7 +54,6 @@ h1 {
 
 .login-page {
     width: 360px;
-    padding: 8% 0 0;
     margin: auto;
 }
 
@@ -106,6 +105,11 @@ h1 {
 }
 
 #logo-image{
+    height:75px;
+    width: 150px;
+}
+
+#logo-image-2{
     height:75px;
     width: 150px;
 }

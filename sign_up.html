@@ -5,11 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sign Up</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/login.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
             integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
             crossorigin="anonymous">
     
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.css" />
+    
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
     
     <script>
       var firebaseConfig = {
@@ -33,39 +44,35 @@
     </script>
   </head>
   <body>
-    <div class="navbar">
-        <a href="index.html" class="left nav-item help" id="indexHelp"><img src="images/help.png"></a>
+    <div class="navbar" style="margin-bottom:30px;">
+        <a href="index.html" class="left nav-item help" id="indexHelp"><img src="images/logo-long.png" id="logo-image-2"></a>
     </div>
 
-    <h4>Sign up</h4><br />
-      <form id="signup-form">
-        <div class="input-field">
-          <label for="signup-name">Username: </label><br>
-          <input type="text" name="name" id="signup-name" required />
+    <section class="title-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 style="margin-bottom: 20px;">Create an Account</h2>
+                    <p><i>Discover new passions and make boredom dis-appear with Dis-COVID.</i></p>
+                </div>
+            </div>
         </div>
-        <div class="input-field">
-          <label for="signup-email">Email address: </label><br>
-          <input type="email" name="email" id="signup-email" required />
+    </section>
+
+    <div class="signup-page">
+        <div class="container-fluid">
+            <div class="form center">
+                <form id="signup-form">
+                    <input type="text" name="name" id="signup-name" placeholder="Username" required /><br>
+                    <input type="email" name="email" id="signup-email" placeholder="Email" required /><br>
+                    <input type="password" name="password" id="signup-password" placeholder="Password" required /><br>
+                    <button id="btnSignup" class="btn btn-action">Sign Up</button>
+                    <p class="message"><a href="index.html">Cancel</a></p>
+                </form>
+            </div>
         </div>
-        <div class="input-field">
-          <label for="signup-password">Choose password: </label><br>
-          <input type="password" name="password" id="signup-password" required />
-        </div>
-        <button id="submit" class="btn yellow darken-2 z-depth-0">Sign up</button>
-      </form>
-    
-    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
-
-    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
-
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
-
+    </div>
+      
     <!-- Compiled and minified JavaScript -->
     <script src="js/sign_up.js"></script>  
     <script src="js/user_status.js"></script>

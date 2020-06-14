@@ -101,9 +101,10 @@
             }
 
             function displayAllPosts(tag) {
-                const testList = document.querySelector('#all-posts');
-                testList.innerHTML = "";
+                const postList = document.querySelector('#all-posts');
+                postList.innerHTML = "";
                 function renderTest(doc) {
+                    /* Define variables -- what are you going to display */
                     let div = document.createElement('div');
                     let a = document.createElement('a');
                     let button = document.createElement('button');
@@ -114,27 +115,31 @@
                     let buttonT2 = document.createElement('button');
                     let buttonT3 = document.createElement('button');
 
+<<<<<<< HEAD
                     div.className = "col-12 col-lg-4 justify-content-center";
                     a.className = "post-link";
+=======
+                    /* Define metadata -- e.g. classes, ids*/
+                    div.className = "col-12 col-lg-4 justify-content-center post-entry";
+                    a.id = "post-link";
+>>>>>>> 114283f9f6c9e87b62a74a7dbb1084b84d654e68
                     button.className = "post center";
                     buttonT1.className = "tags";
                     buttonT2.className = "tags";
                     buttonT3.className = "tags";
                     image.id = "post-one-img";
 
-                    buttonT1.innerHTML=doc.data().tag1;
-                    buttonT2.innerHTML=doc.data().tag2;
-                    buttonT3.innerHTML=doc.data().tag3;
-                    if (doc.data().tag1=="")
-                    {
+                    buttonT1.innerHTML = doc.data().tag1;
+                    buttonT2.innerHTML = doc.data().tag2;
+                    buttonT3.innerHTML = doc.data().tag3;
+
+                    if (doc.data().tag1 == "") {
                         buttonT1.style = "display: none;";
                     }
-                    if (doc.data().tag2=="")
-                    {
+                    if (doc.data().tag2 == "") {
                         buttonT2.style = "display: none;";
                     }
-                    if (doc.data().tag3=="")
-                    {
+                    if (doc.data().tag3 == "") {
                         buttonT3.style = "display: none;";
                     }
                     //a.href = doc.data().img_url;
@@ -154,12 +159,11 @@
                     if(doc.data().tag3 != "Default"){
                         button.appendChild(buttonT3);
                     }
-                    
-                    a.appendChild(button);
 
+                    a.appendChild(button);
                     div.appendChild(a);
                     
-                    testList.appendChild(div);
+                    postList.appendChild(div);
                 }
                 
                 if (tag.length == 0) {
@@ -171,8 +175,7 @@
                         renderTest(doc);
                         createOnClick();
                         });
-                    })
-                    .catch(err => {
+                    }).catch(err => {
                         console.log('Error getting documents', err);
                     });
                 } else {
@@ -185,8 +188,7 @@
                         renderTest(doc);
                         createOnClick();
                         });
-                    })
-                    .catch(err => {
+                    }).catch(err => {
                         console.log('Error getting documents', err);
                     });
 
@@ -196,8 +198,7 @@
                         renderTest(doc);
                         createOnClick();
                         });
-                    })
-                    .catch(err => {
+                    }).catch(err => {
                         console.log('Error getting documents', err);
                     });
 
@@ -207,13 +208,13 @@
                         renderTest(doc);
                         createOnClick();
                         });
-                    })
-                    .catch(err => {
+                    }).catch(err => {
                         console.log('Error getting documents', err);
                     });
                 }
                 
             }
+<<<<<<< HEAD
 
             function createOnClick() {
                 var modal = document.getElementById("postModal");
@@ -247,6 +248,8 @@
                 }
             
             }
+=======
+>>>>>>> 114283f9f6c9e87b62a74a7dbb1084b84d654e68
         </script>
 
         <!-- <script>

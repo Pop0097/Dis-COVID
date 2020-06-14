@@ -1,81 +1,122 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/login.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sign Up</title>
+        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="style/login.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
             integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
             crossorigin="anonymous">
     
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.css" />
-    
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.css" />
+        
+        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
 
-    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+        <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
 
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
-    
-    <script>
-      var firebaseConfig = {
-          apiKey: "AIzaSyDAquTNfqjwa8bMBSzmyO_sEaeKhhq0rWQ",
-          authDomain: "dis-covid.firebaseapp.com",
-          databaseURL: "https://dis-covid.firebaseio.com",
-          projectId: "dis-covid",
-          storageBucket: "dis-covid.appspot.com",
-          messagingSenderId: "93140684291",
-          appId: "1:93140684291:web:b740d37d012982f706c836",
-          measurementId: "G-ZNYK27S4Z4"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-        // Initialize database
-        const db = firebase.firestore();
-        //db.settings({timestampsInSnapshots: true});
-        //Initializes authentication
-        const auth = firebase.auth();
-    </script>
-  </head>
-  <body>
-    <div class="navbar" style="margin-bottom:30px;">
-        <a href="index.html" class="left nav-item help" id="indexHelp"><img src="images/logo-long.png" id="logo-image-2"></a>
-    </div>
+        <!-- Add Firebase products that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+        
+        <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDAquTNfqjwa8bMBSzmyO_sEaeKhhq0rWQ",
+            authDomain: "dis-covid.firebaseapp.com",
+            databaseURL: "https://dis-covid.firebaseio.com",
+            projectId: "dis-covid",
+            storageBucket: "dis-covid.appspot.com",
+            messagingSenderId: "93140684291",
+            appId: "1:93140684291:web:b740d37d012982f706c836",
+            measurementId: "G-ZNYK27S4Z4"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+            // Initialize database
+            const db = firebase.firestore();
+            //db.settings({timestampsInSnapshots: true});
+            //Initializes authentication
+            const auth = firebase.auth();
+        </script>
+    </head>
+    <body>
+        <div class="navbar" style="margin-bottom:30px;">
+            <a href="index.html" class="left nav-item help" id="indexHelp"><img src="images/logo-long.png" id="logo-image-2"></a>
+        </div>
 
-    <section class="title-area">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h2 style="margin-bottom: 20px;">Create an Account</h2>
-                    <p><i>Discover new passions and make boredom dis-appear with Dis-COVID.</i></p>
+        <section class="title-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 style="margin-bottom: 20px;">Create an Account</h2>
+                        <p><i>Discover new passions and make boredom dis-appear with Dis-COVID.</i></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="signup-page center">
+            <div class="container-fluid">
+                <div class="form center">
+                    <form id="signup-form">
+                        <input type="text" name="name" id="signup-name" placeholder="Username" required /><br>
+                        <input type="email" name="email" id="signup-email" placeholder="Email" required /><br>
+                        <input type="password" name="password" id="signup-password" placeholder="Password" required /><br>
+                        <button id="btnSignup" class="btn btn-action">Sign Up</button>
+                        <p class="message"><a href="index.html">Cancel</a></p>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
 
-    <div class="signup-page center">
-        <div class="container-fluid">
-            <div class="form center">
-                <form id="signup-form">
-                    <input type="text" name="name" id="signup-name" placeholder="Username" required /><br>
-                    <input type="email" name="email" id="signup-email" placeholder="Email" required /><br>
-                    <input type="password" name="password" id="signup-password" placeholder="Password" required /><br>
-                    <button id="btnSignup" class="btn btn-action">Sign Up</button>
-                    <p class="message"><a href="index.html">Cancel</a></p>
-                </form>
-            </div>
-        </div>
-    </div>
-      
-    <!-- Compiled and minified JavaScript -->
-    <script src="js/sign_up.js"></script>  
-    <script src="js/user_status.js"></script>
-  </body>
+        <script>
+            // signup
+            const signupForm = document.getElementById('signup-form');
+            signupForm.addEventListener('submit', function(e){
+                console.log('sign up is working');
+                e.preventDefault();
+
+                // get user info
+                const email = signupForm['signup-email'].value;
+                const password = signupForm['signup-password'].value;
+
+                // sign up the user
+                auth.createUserWithEmailAndPassword(email, password).then(cred => {
+                    // close the signup modal & reset form
+                    postActions(); 
+                });
+            }, false);
+
+            function postActions() {
+                firebase.auth().onAuthStateChanged(user => {
+                    if (user) {
+                        const userName = signupForm.name.value;
+                        console.log(userName);
+
+                        user.updateProfile({
+                            displayName: userName
+                        }).then(function() {
+                            console.log("username entered!");
+                        }).catch(function(error) {
+                            console.log("username NOT entered!");
+                        });;
+                        
+                        user.sendEmailVerification().then(function() {
+                        console.log("Verification email sent!");
+                        }).catch(function(error) {
+                            console.log("Verification email NOT sent!");
+                        });
+                        signupForm.reset();
+                        window.location.replace("all_posts.html");
+                    } else {
+                        console.log("Post signup actions not performed");
+                    }
+                });
+            }
+        </script>
+    </body>
 </html>
-

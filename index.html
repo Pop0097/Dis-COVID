@@ -4,15 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Dis-COVID</title>
+
         <link href="https://fonts.googleaps.com/css?family=Roboto:300,500" rel="stylesheet">
         <link rel="stylesheet" href="style/style.css">
         <link rel="stylesheet" href="style/login.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
             integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
             crossorigin="anonymous">
-
+        <link rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.css" />
+        
         <script src="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -53,7 +54,6 @@
                 if (user) {
                     console.log('Redirecting to all_posts.html');
                     window.location.replace("all_posts.html");
-
                 } else {
                     console.log('Not redirecting');
                 }
@@ -92,8 +92,23 @@
             </div>
         </div>
 
-        <script src="js/app.js"></script>
-        <script src="js/login.js"></script>
-        <script src="js/user_status.js"></script>
+        <script> 
+            const loginForm = document.getElementById('login-form');
+            loginForm.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // get user info
+            const email = loginForm['login-email'].value;
+            const password = loginForm['login-password'].value;
+
+            // log the user in
+            firebase.auth().signInWithEmailAndPassword(email, password).then(function(e) {
+                console.log("login is working");
+                loginForm.reset();
+                }, false).catch(function(err) {
+                    console.log("login did not work!");
+                });
+            });
+        </script>
     </body>
 </html>

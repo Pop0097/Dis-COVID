@@ -35,9 +35,7 @@
             //db.settings({timestampsInSnapshots: true});
             //Initializes authentication
             const auth = firebase.auth();
-        </script>
 
-        <script>
             //get user information
             firebase.auth().onAuthStateChanged(user => {
                 if (user) {
@@ -112,7 +110,6 @@
         <div class="row" id="all-posts"></div>
     </div>
     
-    
     <script src="js/logout.js"></script>
     <script src="js/profile.js"></script>
     <script src="js/logo.js"></script>
@@ -157,7 +154,7 @@
                 let buttonT3 = document.createElement('button');
 
                 div.className = "col-12 col-lg-4 justify-content-center";
-                a.id = "post-link center";
+                a.id = "post-link";
                 button.className = "post center";
                 buttonT1.className = "tags";
                 buttonT2.className = "tags";
@@ -217,6 +214,5 @@
             });        
         }
     </script>
-
     </body>
 </html>

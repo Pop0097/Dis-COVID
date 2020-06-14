@@ -37,16 +37,22 @@
         
         firebase.initializeApp(firebaseConfig);
 
-        //var database = firebase.firestore().collection('posts');
+        /*
+        const db = firebase.firestore();
 
-        var postsRef =  firebase.firestore().collection('posts');
-            postsRef.on('value', function(snapshot) {
-                snapshot.forEach(function(childSnapshot) {
-                var childData = childSnapshot.val();
-                console.log(childData);
-            });
+        let cityRef = db.collection('posts').doc('SF');
+        let getDoc = cityRef.get()
+            .then(doc => {
+                if (!doc.exists) {
+                console.log('No such document!');
+                } else {
+                console.log('Document data:', doc.data());
+                }
+            })
+            .catch(err => {
+                console.log('Error getting document', err);
         });
-
+        */
 
     </script>
 

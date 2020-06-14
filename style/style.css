@@ -2,15 +2,10 @@ body {
     background-color: #b0b0b0;
 }
 
-
 h1 {
     color: #0400b0;
     font-family: Tahoma, Geneva, sans-serif;
     display: inline-block;
-}
-
-a {
-    float: right;
 }
 
 .page-header {
@@ -31,6 +26,10 @@ a {
 #search-bar {
     width: 90%;
     margin: auto;
+}
+
+#login-button {
+    text-align: right;
 }
 
 img {

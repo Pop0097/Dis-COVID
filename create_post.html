@@ -18,6 +18,10 @@
     <form id="add-test-form">
         <input type="text" name="day" placeholder="day">
         <input type="text" name="time" placeholder="1.2">
+        <label class="upload-group">
+          Upload Image
+          <input type="file" id="file">
+        </label>
         <button>Add Test element</button>
     </form>
     
@@ -50,9 +54,12 @@
         // Initialize database
         const db = firebase.firestore();
         db.settings({timestampsInSnapshots: true});
+        //Initializes authentication
+        const auth = firebase.auth();
     </script>
 
     <script src="js/app.js"></script>
+    <script src="js/authenticate.js"></script>
   </body>
 </html>
 

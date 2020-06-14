@@ -52,86 +52,65 @@
     
     <body>
         <div class="navbar">
-            <a href="all_posts.html" class="left nav-item help" id="indexHelp"><img src="images/logo-long.png" class="logo-image"></a>
+            <a href="all_posts.html" class="left nav-item help" id="indexHelp"><img src="images/logo-long.png" id="logo-image"></a>
             <input type="search" placeholder="Search">
-            <a href="profile.html" id="logout-link"><img src="images/profile.png" id="logout-img"></a>
-            <a href="favorites.html"><img src="images/heart.png"></a>
+            <!--<a href="profile.html" id="logout-link"><img src="images/profile.png" id="logout-img"></a>
+            <a href="favorites.html"><img src="images/heart.png"></a>-->
+            <a href="create_post.html" ><img src="images/create-post-image.png"></a>
             <a href="index.html" ><img src="images/login.png" id="logout"></a>
         </div>
         <h1 id="post-result-header">These are the results for: </h1>
         <div class="container">
-            <div class="row">
-                <div class="col-12 col-lg-4 justify-content-center">
-                    <a id ="post-link" href="https://google.com">
-                        <button class="post" id="post-one">
-                            <h2 id="post-one-title">Title 1</h2>
-                            <img id="post-one-img"src="https://semantic-ui.com/images/wireframe/image.png">
-                            <h6 id="post-one-description">Desc 1</h6>
-                        </button>
-                    </a>
-                </div>
-                <div class="col-12 col-lg-4 justify-content-center">
-                    <a id ="post-link" href="https://google.com">
-                        <button class="post" id="post-two">
-                            <h2 id="post-one-title">Title 2</h2>
-                            <img id="post-one-img"src="https://semantic-ui.com/images/wireframe/image.png">
-                            <h6 id="post-one-description">Desc 2</h6>
-                        </button>
-                    </a>
-                </div>
-                <div class="col-12 col-lg-4 justify-content-center">
-                    <a id ="post-link" href="https://google.com">
-                        <button class="post" id="post-two">
-                            <h2 id="post-one-title">Title 3</h2>
-                            <img id="post-one-img"src="https://semantic-ui.com/images/wireframe/image.png">
-                            <h6 id="post-one-description">Desc 3</h6>
-                        </button>
-                    </a>
-                </div>
+            <div class="row" id="all-posts">
+                
             </div>
         </div>
 
-
         <script>
-            /*
             const testList = document.querySelector('#all-posts');
 
             function renderTest(doc) {
-                //create elements in which data will be displayed
-                let li = document.createElement('li');
+                let div = document.createElement('div');
+                let a = document.createElement('a');
+                let button = document.createElement('button');
+                let h2 = document.createElement('h2');
                 let image = document.createElement('img');
-            
-                li.setAttribute('data-id', doc.id); //first parameter is attribute name, id property is second parameter (we use document id in firestore for this)
-                
+                let h6 = document.createElement('h6');
+
+                div.className = "col-12 col-lg-4 justify-content-center";
+                a.id = "post-link";
+                button.className = "post";
+                image.id = "post-one-img";
+
+                a.href = doc.data().img_url;
+                h2.innerHTML = "hello";
                 image.src = doc.data().img_url;
-                //image.src = "https://firebasestorage.googleapis.com/v0/b/dis-covid.appspot.com/o/images%2Famnguyen%40stu.naperville203.org%2Fblue.png?alt=media&token=a1245c01-5731-4ae1-8313-ee1498384447";
+                h6.innerHTML = "hey";
 
-                li.appendChild(image);
+                button.appendChild(h2);
+                button.appendChild(image);
+                button.appendChild(h6);
                 
-                //append new created list to the element that is present in index.html onload
-                testList.appendChild(li);
-            }
-            */
+                a.appendChild(button);
 
-            /*
+                div.appendChild(a);
+                
+                testList.appendChild(div);
+            }
+            
             let postRef = db.collection('posts');
             let allPosts = postRef.get().then(snapshot => {
                 snapshot.forEach(doc => {
                 console.log(doc.id, '=>', doc.data().img_url);
-                //document.getElementById("cool").src = doc.data().img_url;
-                
-                //renderTest(doc);
+                renderTest(doc);
                 });
             })
             .catch(err => {
-                console.log('Error gettin
-                
-                g documents', err);
+                console.log('Error getting documents', err);
             });
-            */
         </script>
 
         <script src="js/logout.js"></script>
-
+        <script src="js/logo.js"></script>
     </body>
 </html>

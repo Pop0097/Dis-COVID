@@ -63,18 +63,6 @@
   max-width: 300px;
   margin: 0 auto;
 }
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-body {
-    padding-top: 70px;
-    background: #F9FFFF; /* fallback for old browsers */
-    /* background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-    background: -moz-linear-gradient(right, #76b852, #8DC26F);
-    background: -o-linear-gradient(right, #76b852, #8DC26F);
-    background: linear-gradient(to left, #76b852, #8DC26F); */
-    font-family: "Roboto", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
 
 h1 {
     text-align: center;

@@ -6,7 +6,9 @@
     <title>Create a New Post</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style/create_post.css">
+    <link rel="stylesheet" href="style/style.css">
     <script src="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.js"></script>
+    <!-- Firebase firebase -->
     <link rel="stylesheet" type="text/css" href="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.css" />
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
@@ -72,11 +74,37 @@
     </script>
   </head>
   <body>
-    <h1>Dis-COVID</h1>
-    <a href="index.html">Go to Home</a><br>
-    <a href="#" id="logout">Logout</a><br>
-    <a id="login-button" href="login.html">Log in</a><br>
+    <div class="navbar">
+        <a href="all_posts.html" class="left nav-item help" id="indexHelp"><img src="images/logo-long.png" id="logo-image"></a>
+        <input type="search" placeholder="Search">
+        <!--<a href="profile.html" id="logout-link"><img src="images/profile.png" id="logout-img"></a>
+        <a href="favorites.html"><img src="images/heart.png"></a>-->
+        <a href="create_post.html" ><img src="images/create-post-image.png"></a>
+        <a href="index.html" ><img src="images/login.png" id="logout"></a>
+    </div>
 
+    <div class="form-area">
+      <div class="container">
+        <div class="form-container">
+          <form id="add-test-form" class="add-post-form">
+            <div class="row">
+              <div class="col-12 form-input">
+                <label>Day:</label>
+                <input type="text" name="day" placeholder="Enter the day" required><br>
+              </div>
+              <div class="col-12 form-input">
+                <label>Time:</label>
+                <input type="text" name="time" placeholder="Enter the time" required><br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 form-input">
+                
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <form id="add-test-form" class="add-post-form">
         <label>Day:</label><input type="text" name="day" placeholder="Enter the day" required><br>
         <label>Time:</label><input type="text" name="time" placeholder="Enter the time" required><br>
@@ -110,6 +138,7 @@
     <script src="js/logout.js"></script>
     <script src="js/user_status.js"></script>
     <script src="js/create_post.js"></script>
+    <script src="js/logo.js"></script>
   </body>
 </html>
 

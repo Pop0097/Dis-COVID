@@ -1,6 +1,6 @@
 <!DOCTYPE html>
     <head>
-        <title>All posts!</title>
+        <title>Dis-COVID</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
@@ -66,6 +66,7 @@
             </div>
         </div>
 
+        <!--Displays all of the posts in 'posts' database-->
         <script>
             const testList = document.querySelector('#all-posts');
 
@@ -83,9 +84,9 @@
                 image.id = "post-one-img";
 
                 a.href = doc.data().img_url;
-                h2.innerHTML = "hello";
+                h2.innerHTML = doc.data().title;
                 image.src = doc.data().img_url;
-                h6.innerHTML = "hey";
+                h6.innerHTML = "Created by: " + doc.data().user;
 
                 button.appendChild(h2);
                 button.appendChild(image);
@@ -98,8 +99,7 @@
                 testList.appendChild(div);
             }
             
-            let postRef = db.collection('posts');
-            let allPosts = postRef.get().then(snapshot => {
+            let allPosts = db.collection('posts').get().then(snapshot => {
                 snapshot.forEach(doc => {
                 console.log(doc.id, '=>', doc.data().img_url);
                 renderTest(doc);

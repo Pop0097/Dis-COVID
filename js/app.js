@@ -2,6 +2,11 @@ var currentUserEmail = "";
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         currentUserEmail = user.email;
+        document.getElementById('logout').style.display = 'inline';
+        document.getElementById('login-button').style.display = 'none';
+    } else {
+        document.getElementById('logout').style.display = 'none';
+        document.getElementById('login-button').style.display = 'inline';
     }
 });
 

@@ -79,3 +79,10 @@ body {
 h1 {
     text-align: center;
 }
+.add-test-form {
+  text-align: center;
+}
+label {
+  padding: 10px;
+  font-size: 18px;
+}

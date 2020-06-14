@@ -1,7 +1,6 @@
 # Dis-COVID
 ## Inspiration
 
-
 ## What it does
 
 ## How we built it

@@ -13,11 +13,46 @@
 
     <a href="index.html">Go to Home</a><br>
     <a href="#" id="logout">Logout</a>
+    <a id="login-button" href="login.html">Log in</a><br>
 
-    <form id="add-test-form">
-        <input type="text" name="day" placeholder="day">
-        <input type="text" name="time" placeholder="1.2">
-        <input type="file" value="upload" id="fileButton">
+    <form id="add-test-form" class="add-test-form">
+        <label>Day:</label><input type="text" name="day" placeholder="day" required><br>
+        <label>Time:</label><input type="text" name="time" placeholder="1.2" required><br>
+        <label>Select Tags (min 1):</label><br>
+        <select name="tag1" id="tag-input">
+            <option value="Default">Select a tag</option>
+            <option value="Baking">Baking</option>
+            <option value="Sculpting">Sculpting</option>
+            <option value="Cake">Cake</option>
+            <option value="Coding">Coding</option>
+        </select><br>
+        <select name="tag2" id="tag-input">
+          <option value="Default">Select a tag</option>
+          <option value="Baking">Baking</option>
+          <option value="Sculpting">Sculpting</option>
+          <option value="Cake">Cake</option>
+          <option value="Coding">Coding</option>
+      </select><br>
+      <select name="tag3" id="tag-input">
+        <option value="Default">Select a tag</option>
+        <option value="Baking">Baking</option>
+        <option value="Sculpting">Sculpting</option>
+        <option value="Cake">Cake</option>
+        <option value="Coding">Coding</option>
+    </select><br>
+        <!--
+          <input list="tags" name="tag-1" id="tag-input" value="Select a tag">
+        <input list="tags" name="tag-2" id="tag-input" value="Select a tag">
+        <input list="tags" name="tag-3" id="tag-input" value="Select a tag">
+        <datalist id="tags">
+          <option value="Baking">
+          <option value="Sculpting">
+          <option value="Cake">
+          <option value="Hackathon">
+          <option value="Coding">
+        </datalist>
+      -->
+      <label>Upload an Image:</label><br><input type="file" value="upload" id="fileButton"><br>
         <button>Add Test element</button>
     </form>
     
@@ -33,21 +68,23 @@
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-storage.js"></script>
-
+    
     <script>
       var firebaseConfig = {
-          apiKey: "AIzaSyDAquTNfqjwa8bMBSzmyO_sEaeKhhq0rWQ",
-          authDomain: "dis-covid.firebaseapp.com",
-          databaseURL: "https://dis-covid.firebaseio.com",
-          projectId: "dis-covid",
-          storageBucket: "dis-covid.appspot.com",
-          messagingSenderId: "93140684291",
-          appId: "1:93140684291:web:b740d37d012982f706c836",
-          measurementId: "G-ZNYK27S4Z4"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        
+        apiKey: "AIzaSyDAquTNfqjwa8bMBSzmyO_sEaeKhhq0rWQ",
+        authDomain: "dis-covid.firebaseapp.com",
+        databaseURL: "https://dis-covid.firebaseio.com",
+        projectId: "dis-covid",
+        storageBucket: "dis-covid.appspot.com",
+        messagingSenderId: "93140684291",
+        appId: "1:93140684291:web:b740d37d012982f706c836",
+        measurementId: "G-ZNYK27S4Z4"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    
+    <script>
         //gets the current user's email
         var currentUserEmail = "";
         firebase.auth().onAuthStateChanged(user => {
@@ -55,9 +92,8 @@
                 currentUserEmail = user.email;
             }
         });
-
-        // Elements for file upload START OF SECTION
-        const storage = firebase.storage();
+        
+        // Elements for file 
         var fileButton = document.getElementById('fileButton');
         
         // Listens for file selection
@@ -67,9 +103,21 @@
           // Creates a storage reference ('folder_name/file_name' is how it's stored)
           var storageRef = firebase.storage().ref('images/' + currentUserEmail + '/' + file.name);
           // Upload file
+          var img_src;
+          storageRef.getDownloadURL().then(function(url) {
+            // Insert url into an <img> tag to "download"
+            console.log(url);
+            img_src = url;
+          });
+
+          firebase.firestore().collection('posts').add({
+            img_url: img_src,
+          });
+
           var task = storageRef.put(file);
-          console.log("uploaded");
+          //console.log("uploaded");
           // Update progress bar
+          
         });
         
         firebase.analytics();
@@ -79,7 +127,7 @@
         //Initializes authentication
         const auth = firebase.auth();
     </script>
-
+    
     <script src="js/app.js"></script>
     <script src="js/logout.js"></script>
     <script src="js/user_status.js"></script>

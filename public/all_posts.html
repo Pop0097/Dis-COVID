@@ -1,17 +1,58 @@
 <!DOCTYPE html>
 <head>
     <title>All posts!</title>
-    <link rel="stylesheet" href="style/all_posts.css">
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 
 <body>
-    <h1>Dis-COVID</h1>
-    
+    <div class="navbar">
+        <a href="#" class="left nav-item help" id="indexHelp"><img src="images/help.png"></a>
+        <input type="search" placeholder="Search">
+        <a href="profile.html" id="logout-link"><img src="images/profile.png" id="logout-img"></a>
+        <a href="favorites.html"><img src="images/heart.png"></a>
+        <a href="login.html" ><img src="images/login.png"></a>
+    </div>
+    <h1 id="post-result-header">These are the results for: </h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <a id ="post-link" href="https://google.com">
+                    <button class="post" id="post-one">
+                        <h2 id="post-one-title">Title 1</h2>
+                        <img id="post-one-img"src="https://semantic-ui.com/images/wireframe/image.png">
+                        <h6 id="post-one-description">Desc 1</h6>
+                    </button>
+                </a>
+            </div>
+            <div class="col-md">
+                <a id ="post-link" href="https://google.com">
+                    <button class="post" id="post-two">
+                        <h2 id="post-one-title">Title 2</h2>
+                        <img id="post-one-img"src="https://semantic-ui.com/images/wireframe/image.png">
+                        <h6 id="post-one-description">Desc 2</h6>
+                    </button>
+                </a>
+            </div>
+            <div class="col-md">
+                <a id ="post-link" href="https://google.com">
+                    <button class="post" id="post-two">
+                        <h2 id="post-one-title">Title 3</h2>
+                        <img id="post-one-img"src="https://semantic-ui.com/images/wireframe/image.png">
+                        <h6 id="post-one-description">Desc 3</h6>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!--
     <a href="index.html">Go to Home</a>
 
     <ul id="all-posts">
     </ul>
+    -->
 
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
@@ -26,6 +67,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-storage.js"></script>
 
+    <!--
     <script>
         var firebaseConfig = {
             apiKey: "AIzaSyDAquTNfqjwa8bMBSzmyO_sEaeKhhq0rWQ",
@@ -73,6 +115,7 @@
             console.log('Error getting documents', err);
         });
     </script>
+    -->
 
 </body>
 

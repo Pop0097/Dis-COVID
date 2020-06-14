@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Welcome to Firebase Hosting</title>
+        <link href="https://fonts.googleaps.com/css?family=Roboto:300,500" rel="stylesheet">
+        <link rel="stylesheet" href="style/style.css">
+
+        <script src="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="style/login.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <!--
+        <div class="page-header"> 
+        <h1>Dis-COVID</h1>
+        <a id="login-button" href="login.html">Log in</a>
+        </div>
+        
+        <div class="search-bar">
+        <input id="search-bar" type="search" placeholder="search for images here!">
+        </div>
+
+        <img src="https://9to5google.com/wp-content/uploads/sites/4/2019/03/google-images-material-theme.jpg?quality=82&strip=all&w=1600"></img>
+
+        <br>
+        <br>
+
+        <a href = "create_post.html">Create post</a><br>
+        <a href="sign_up.html">Sign up</a><br>
+        <a href="login.html">Log in</a><br>
+        <a href="#" id="logout">Logout</a>
+
+        <ul id="test-list">
+        </ul>
+        -->
+
+        <h1 class="title-text">Dis-COVID</h1>
+
+        <div class="login-page">
+        <div class="form">
+            <form class="login-form">
+            <input id="txtEmail" type="email" placeholder="Email">
+            <input id="txtPassword" type="password" placeholder="Password"><br>
+
+            <button id="btnLogin" class="btn btn-action">
+                Login
+            </button>
+            <p class="message">Don't have an account? <a href="sign_up.html">Sign Up Below</a></p>
+            <button id="btnSignUp" class="btn btn-secondary">
+                <a href="sign_up.html">Sign Up</a>
+            </button>
+            <!---
+            <button id="btnLogout" class="btn btn-action hide">
+                Log Out
+            </button>
+            -->
+            </form>
+        </div>
+        </div>
+        
+        <a href = "create_post.html">Create post</a><br>
+        <a href = "all_posts.html">View all posts</a><br>
+        <!--
+        <div class="search-bar">
+            <input type="search" placeholder="search">
+        </div>
+        -->
+        <a id="login-button" href="login.html">Log in</a><br>
+        <a id="signup-button" href="sign_up.html">Sign up</a><br>
+        <a href = "create_post.html">Create post</a><br>
+        <a href = "all_posts.html">View all posts</a><br>
+        <a href = "#" id="logout">Logout</a><br>
+
+        <ul id="test-list">
+        </ul>
+        <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+        <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+        <!-- Add Firebase products that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyDAquTNfqjwa8bMBSzmyO_sEaeKhhq0rWQ",
+                authDomain: "dis-covid.firebaseapp.com",
+                databaseURL: "https://dis-covid.firebaseio.com",
+                projectId: "dis-covid",
+                storageBucket: "dis-covid.appspot.com",
+                messagingSenderId: "93140684291",
+                appId: "1:93140684291:web:b740d37d012982f706c836",
+                measurementId: "G-ZNYK27S4Z4"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+            // Initialize database
+            const db = firebase.firestore();
+            //db.settings({timestampsInSnapshots: true});
+            //Initializes authentication
+            const auth = firebase.auth();
+        </script>
+
+        <script src="js/app.js"></script>
+        <script src="js/logout.js"></script>
+        <script src="js/user_status.js"></script>
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </body>
+</html>

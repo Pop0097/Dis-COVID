@@ -1,5 +1,4 @@
 # Dis-COVID
-## Logo
 ![Logo](images/logo-long.png)
 
 Discover new passions and make boredom dis-appear with Dis-COVID.
@@ -21,7 +20,9 @@ HTML5 and CSS3 were used to structure and style the web application. Javascript 
 ## Challenges we ran into
 
 As none of our group members had any experience using Firebase, it was very difficult to implement it into our project. To familiarize ourselves with Firebase, we invested around four hours to understand how to use Firebase. During the learning process, we found [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) very helpful. 
+
 Another challenge we faced was the implementation of Firebase authentication because the API was not working when we followed online sources. With self-experimentation, we found that separating signing in, logging off, and logging on into different Javascript files solved the problem. 
+
 Another difficult challenge we ran into was linking pictures stored in Cloud Storage to posts stored in Cloud Firestore so when a post is displayed, the correct picture is displayed as well. Geoffrey took on this challenge and discovered how to store the Firebase image URL of an image into a post document in Cloud Firestore, resolving the issue.
 
 ## Accomplishments that we're proud of
@@ -44,5 +45,3 @@ Contributors to this project:
 - Geoffrey Wu: https://github.com/thedoge42
 - William Zhang: https://github.com/Phytal
 - Dhruv Rawat (owner of this repository): https://github.com/Pop0097
-
-Devpost Link: 

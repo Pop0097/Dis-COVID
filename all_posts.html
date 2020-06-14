@@ -126,9 +126,15 @@
                     button.appendChild(h2);
                     button.appendChild(image);
                     button.appendChild(h6);
-                    button.appendChild(buttonT1);
-                    button.appendChild(buttonT2);
-                    button.appendChild(buttonT3);
+                    if(doc.data().tag1 != "Default"){
+                        button.appendChild(buttonT1);
+                    }
+                    if(doc.data().tag2 != "Default"){
+                        button.appendChild(buttonT2);
+                    }
+                    if(doc.data().tag3 != "Default"){
+                        button.appendChild(buttonT3);
+                    }
                     
                     a.appendChild(button);
 

@@ -36,18 +36,19 @@
             //Initializes authentication
             const auth = firebase.auth();
         </script>
-        
+
         <script>
-            // listen for auth status changes
+            //get user information
             firebase.auth().onAuthStateChanged(user => {
-                if(user) {
+                if (user) {
                     console.log('Not redirecting');
-                } else {
+                } else { //if user not logged in, page redirects
                     console.log('Redirecting to index.html');
                     window.location.replace("index.html");
                 }
             });
         </script>
+
     </head>
     <body>
     <div class="navbar" style="margin-bottom: 30px;">
@@ -106,9 +107,109 @@
             </div>
         </div>
     </section>
-    
-    
 
+    <div class="container">
+        <div class="row" id="all-posts"></div>
+    </div>
+    
+    
+    <script src="js/logout.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/logo.js"></script>
+
+    <script>
+        //get user information
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                console.log('user logged in: ', user);
+                //get user email and username
+                var userEmail = user.email;
+                var userUsername = user.displayName; 
+                //pass email and username into function to display them
+                displayUserInformation(userEmail, userUsername); 
+                displayUserPosts(userEmail, userUsername);
+            } else { //if user not logged in, page redirects
+                console.log('Redirecting to index.html');
+                window.location.replace("index.html");
+            }
+        });
+
+        function displayUserInformation(userEmail, userUsername){
+            console.log(userUsername, " ", userEmail);
+            if(userUsername){
+                document.getElementById('user-username').innerHTML = userUsername; //prints username if defined
+            }
+            document.getElementById('user-email').innerHTML = userEmail; //prints email
+        }
+        
+        function displayUserPosts(userEmail, userUsername){
+            const testList = document.querySelector('#all-posts');
+            testList.innerHTML = "";
+            function renderTest(doc) {
+                let div = document.createElement('div');
+                let a = document.createElement('a');
+                let button = document.createElement('button');
+                let h2 = document.createElement('h2');
+                let image = document.createElement('img');
+                let h6 = document.createElement('h6');
+                let buttonT1 = document.createElement('button');
+                let buttonT2 = document.createElement('button');
+                let buttonT3 = document.createElement('button');
+
+                div.className = "col-12 col-lg-4 justify-content-center";
+                a.id = "post-link";
+                button.className = "post";
+                buttonT1.className = "tags";
+                buttonT2.className = "tags";
+                buttonT3.className = "tags";
+                image.id = "post-one-img";
+
+                buttonT1.innerHTML=doc.data().tag1;
+                buttonT2.innerHTML=doc.data().tag2;
+                buttonT3.innerHTML=doc.data().tag3;
+                if (doc.data().tag1=="")
+                {
+                    buttonT1.style = "display: none;";
+                }
+                if (doc.data().tag2=="")
+                {
+                    buttonT2.style = "display: none;";
+                }
+                if (doc.data().tag3=="")
+                {
+                    buttonT3.style = "display: none;";
+                }
+                a.href = doc.data().img_url;
+                h2.innerHTML = doc.data().subject;
+                image.src = doc.data().img_url;
+                h6.innerHTML = "Created by: " + doc.data().user;
+
+                button.appendChild(h2);
+                button.appendChild(image);
+                button.appendChild(h6);
+                button.appendChild(buttonT1);
+                button.appendChild(buttonT2);
+                button.appendChild(buttonT3);
+                
+                a.appendChild(button);
+
+                div.appendChild(a);
+                
+                testList.appendChild(div);
+            }
+            
+            //prints all posts associated with user
+            db.collection('posts').where('user', '==', userEmail).get().then(snapshot => {
+                snapshot.forEach(doc => {
+                console.log(doc.id, '=>', doc.data().img_url);
+                renderTest(doc);
+                });
+            })
+            .catch(err => {
+                console.log('Error getting documents', err);
+            });        
+        }
+    </script>
 
     </body>
 </html>

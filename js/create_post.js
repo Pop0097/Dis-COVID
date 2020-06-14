@@ -6,10 +6,7 @@ firebase.auth().onAuthStateChanged(user => {
     if (user) {
         currentUserEmail = user.email;
         console.log(currentUserEmail, "\nuser logged in:\n", user);
-        document.getElementById('logout').style.visibility = 'visible';
         getPostDocNumber();
-    } else {
-        document.getElementById('logout').style.visibility = 'hidden';
     }
 });
 
@@ -90,5 +87,5 @@ form.addEventListener('submit', function(e) {
         post_counter: post_counter,
     });
 
-    window.location.replace("all_posts.html"); //redirects user to home page
+    //window.location.replace("all_posts.html"); //redirects user to home page
 }, false);

@@ -1,4 +1,5 @@
 
+
 var currentUserEmail = "";
 var currentUsername = "";
 var post_counter = 0;
@@ -52,10 +53,26 @@ const form = document.getElementById('add-post-form');
 form.addEventListener('submit', function(e) {
     e.preventDefault(); //prevents page from refreshing
 
-    var tagOne = form.tag1.value;
-    var tagTwo = form.tag2.value;
-    var tagThree = form.tag3.value;
+    function titleCase(str) {
+        str = str.toLowerCase().split(' ');
+        for (var i = 0; i < str.length; i++) {
+            str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+        }
+        return str.join(' ');
+    }
 
+    var tagOne = form.tag1.value;
+    if (tagOne == "Other") {
+        tagOne = titleCase(form.otherTag1.value);
+    }
+    var tagTwo = form.tag2.value;
+    if (tagTwo == "Other") {
+        tagTwo = titleCase(form.otherTag2.value);
+    }
+    var tagThree = form.tag3.value;
+    if (tagThree == "Other") {
+        tagThree = titleCase(form.otherTag3.value);
+    }
     //if tags are identical, they are made so that they are not
     if(tagOne == tagTwo || tagTwo == tagThree) {
         tagTwo = "Default";
@@ -94,7 +111,7 @@ form.addEventListener('submit', function(e) {
         post_counter: post_counter,
     });
 
-    //after 2 seconds, redirect the user to 
+    //after 2 seconds, redirect the user to the home page, where they can see all of the posts
     timer = window.setTimeout(goToPosts(), 2000); 
 }, false);
 

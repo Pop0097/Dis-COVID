@@ -7,7 +7,6 @@
   <title>Dis-COVID -- Create Post</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="stylesheet" href="style/create_post.css">
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/login.css">
 
@@ -111,7 +110,7 @@
               <label>Select Tags (min 1):</label><br>
             </div>
             <div class="col-12 form-selector">
-              <select class="center" name="tag1" id="tag-input" onchange='Check(this.value);'>
+              <select class="center" name="tag1" id="tag-input">
                 <option value="Default">Select a tag</option>
                 <option value="Baking">Baking</option>
                 <option value="Sculpting">Sculpting</option>
@@ -119,16 +118,22 @@
                 <option value="Coding">Coding</option>
                 <option value="Other">Other</option>
               </select>
-              <input type="text" name="otherTag" id="otherTag" style='display:none;'/><br>
+              <input type="text" name="otherTag1" id="otherTag1" style='display:none;' placeholder = "Enter a new tag"/><br>
+              
               <script>
-                function Check(val) {
-                  var element = document.getElementById('tag1');
-                  if (val == 'Other')
+                const tag1 = document.getElementsByName("tag1")[0];
+                tag1.addEventListener('click', function(e) {
+                  var val = tag1.value;
+                  var element = document.getElementById('otherTag1');
+                  if (val == 'Other') {
                     element.style.display = 'block';
-                  else
+                  } else {
                     element.style.display = 'none';
+                  }
+                });
               </script>
             </div>
+
             <div class="col-12 form-selector">
               <select class="center" name="tag2" id="tag-input">
                 <option value="Default">Select a tag</option>
@@ -136,8 +141,24 @@
                 <option value="Sculpting">Sculpting</option>
                 <option value="Cooking">Cooking</option>
                 <option value="Coding">Coding</option>
-              </select> <br>
+                <option value="Other">Other</option>
+              </select><br>
+              <input type="text" name="otherTag2" id="otherTag2" style='display:none;' placeholder = "Enter a new tag"/><br>
+              
+              <script>
+                const tag2 = document.getElementsByName("tag2")[0];
+                tag2.addEventListener('click', function(e) {
+                  var val = tag2.value;
+                  var element = document.getElementById('otherTag2');
+                  if (val == 'Other') {
+                    element.style.display = 'block';
+                  } else {
+                    element.style.display = 'none';
+                  }
+                });
+              </script>
             </div>
+
             <div class="col-12 form-selector">
               <select class="center" name="tag3" id="tag-input">
                 <option value="Default">Select a tag</option>
@@ -145,7 +166,23 @@
                 <option value="Sculpting">Sculpting</option>
                 <option value="Cooking">Cooking</option>
                 <option value="Coding">Coding</option>
+                <option value="Other">Other</option>
               </select>
+              <input type="text" name="otherTag3" id="otherTag3" style='display:none;' placeholder = "Enter a new tag"/><br>
+              
+              <script>
+                const tag3 = document.getElementsByName("tag3")[0];
+                tag3.addEventListener('click', function(e) {
+                  var val = tag3.value;
+                  var element = document.getElementById('otherTag3');
+                  if (val == 'Other') {
+                    element.style.display = 'block';
+                  } else {
+                    element.style.display = 'none';
+                  }
+                });
+              </script>
+
             </div>
             <div class="col-12 form-picture-input text-center">
               <label>Upload an Image:</label><br>
@@ -161,11 +198,8 @@
       </div>
     </div>
   </section>
-
-  <script src="js/logout.js"></script>
-  <script src="js/user_status.js"></script>
-  <script src="js/create_post.js"></script>
-  <script src="js/logo.js"></script>
-</body>
-
+    <script src="js/logout.js"></script>
+    <script src="js/create_post.js"></script>
+    <script src="js/logo.js"></script>
+  </body>
 </html>

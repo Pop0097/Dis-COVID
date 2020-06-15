@@ -1,7 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-
-
 body {
     background: #F9FFFF; /* fallback for old browsers */
     /* background: -webkit-linear-gradient(right, #76b852, #8DC26F);
@@ -174,10 +172,21 @@ body {
 
 /* Code for headers in all files */
 
+#go-back-text {
+    margin-top: 3%;
+    margin-left: 10%;
+}
+
+
+#go-back-link {
+    text-decoration: none;
+    margin: 15px 0 0;
+    font-size: 14px;
+}
+
 h1 {
     color: #5ef4;
 }
-
 
 .title-text {
     text-align: center;
@@ -186,9 +195,24 @@ h1 {
 #post-result-header{
     margin-top: 3%;
     margin-left: 10%;
+    text-align: left;
     color: black;
     font-weight: 600;
 }
+
+@media(max-width: 1000px){
+    #post-result-header{
+        margin-left: 0%;
+        text-align: center;
+    }
+
+    #go-back-text {
+        text-align: center;
+        margin-left: 0%;
+
+    }
+}
+
 
 /* Code for the navbar (header) in all pages */
 

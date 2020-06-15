@@ -4,6 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style/style.css">
         <link rel="stylesheet" href="style/login.css">
+        <link rel="stylesheet" href="style/all_posts.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
             integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
             crossorigin="anonymous">
@@ -17,38 +18,9 @@
         <!-- Add Firebase products that you want to use -->
         <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
-        <script>
-            firebaseConfig = {
-                apiKey: "AIzaSyDAquTNfqjwa8bMBSzmyO_sEaeKhhq0rWQ",
-                authDomain: "dis-covid.firebaseapp.com",
-                databaseURL: "https://dis-covid.firebaseio.com",
-                projectId: "dis-covid",
-                storageBucket: "dis-covid.appspot.com",
-                messagingSenderId: "93140684291",
-                appId: "1:93140684291:web:b740d37d012982f706c836",
-                measurementId: "G-ZNYK27S4Z4"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            firebase.analytics();
-            // Initialize database
-            const db = firebase.firestore();
-            //db.settings({timestampsInSnapshots: true});
-            //Initializes authentication
-            const auth = firebase.auth();
-        </script>
         
-        <script>
-            // listen for auth status changes
-            firebase.auth().onAuthStateChanged(user => {
-                if(user) {
-                    console.log('Not redirecting');
-                } else {
-                    console.log('Redirecting to index.html');
-                    window.location.replace("index.html");
-                }
-            });
-        </script>
+        <script src="js/initialization.js"></script>
+        <script src="js/check_login_status.js"></script>
     </head>
     
     <body>
@@ -62,6 +34,7 @@
             </div>
         </div>
 
+        <p id="go-back-text" style="display: none;"><a href="all_posts.html" id="go-back-link">Go back</a></p>  
         <h1 id="post-result-header"></h1>
         <div class="container container-fluid">
             <div class="row" id="all-posts"></div>
@@ -103,18 +76,9 @@
                     let buttonT2 = document.createElement('button');
                     let buttonT3 = document.createElement('button');
 
-<<<<<<< HEAD
-                    div.className = "col-12 col-lg-4 justify-content-center";
-<<<<<<< HEAD
-                    a.className = "post-link";
-=======
                     /* Define metadata -- e.g. classes, ids*/
                     div.className = "col-12 col-lg-4 justify-content-center post-entry";
                     a.id = "post-link";
->>>>>>> 114283f9f6c9e87b62a74a7dbb1084b84d654e68
-=======
-                    a.id = "post-link";
->>>>>>> parent of a3b764c... Added Modal when post is clicked
                     button.className = "post center";
                     buttonT1.className = "tags";
                     buttonT2.className = "tags";
@@ -134,7 +98,7 @@
                     if (doc.data().tag3 == "") {
                         buttonT3.style = "display: none;";
                     }
-                    a.href = doc.data().img_url;
+                    // a.href = doc.data().img_url;
                     h2.innerHTML = doc.data().subject;
                     image.src = doc.data().img_url;
                     h6.innerHTML = "Created by: " + doc.data().user;
@@ -159,24 +123,28 @@
                 }
                 
                 if (tag.length == 0) {
+                    document.getElementById('go-back-text').style.display = 'none';
                     document.getElementById("post-result-header").innerHTML = 
                     "All posts:";
                     db.collection('posts').get().then(snapshot => {
                         snapshot.forEach(doc => {
                         console.log(doc.id, '=>', doc.data().img_url);
                         renderTest(doc);
+                        createOnClick();
                         });
                     }).catch(err => {
                         console.log('Error getting documents', err);
                     });
                 } else {
+                    document.getElementById('go-back-text').style.display = 'block';
                     document.getElementById("post-result-header").innerHTML = 
-                    "These are the posts that include the tag: " + tag;
+                    "These are the posts that include the tag '" + tag+"':";
                     console.log("you searched something");
                     db.collection('posts').where('tag1', '==', tag).get().then(snapshot => {
                         snapshot.forEach(doc => {
                         console.log(doc.id, '=>', doc.data().img_url);
                         renderTest(doc);
+                        createOnClick();
                         });
                     }).catch(err => {
                         console.log('Error getting documents', err);
@@ -186,6 +154,7 @@
                         snapshot.forEach(doc => {
                         console.log(doc.id, '=>', doc.data().img_url);
                         renderTest(doc);
+                        createOnClick();
                         });
                     }).catch(err => {
                         console.log('Error getting documents', err);
@@ -195,15 +164,14 @@
                         snapshot.forEach(doc => {
                         console.log(doc.id, '=>', doc.data().img_url);
                         renderTest(doc);
+                        createOnClick();
                         });
                     }).catch(err => {
                         console.log('Error getting documents', err);
                     });
                 }
             }
-<<<<<<< HEAD
 
-<<<<<<< HEAD
             function createOnClick() {
                 var modal = document.getElementById("postModal");
                 console.log("got modal", modal)
@@ -234,12 +202,7 @@
                         modal.style.display = "none";
                     }
                 }
-            
             }
-=======
->>>>>>> 114283f9f6c9e87b62a74a7dbb1084b84d654e68
-=======
->>>>>>> parent of a3b764c... Added Modal when post is clicked
         </script>
 
         <script src="js/logout.js"></script>

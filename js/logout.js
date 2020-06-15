@@ -1,11 +1,11 @@
 // logout
 const logout = document.getElementById('logout');
-logout.addEventListener('click', function(e){
+logout.addEventListener('click', function (e) {
   e.preventDefault();
-  firebase.auth().signOut().then(function(){
+  firebase.auth().signOut().then(function () {
     console.log("logout successful");
     window.location.replace("index.html");
-  }).catch(function(error){
+  }).catch(function (error) {
     console.log("logout unsuccessful!");
   });
 }, false);

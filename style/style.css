@@ -140,7 +140,6 @@ body {
 .container .post-entry {
     min-height: 300px;
 }
-
 .container button {
     background-color: #a0ff9c;
     border:none;
@@ -166,6 +165,7 @@ body {
     opacity: 1;
     transition: opacity 0.3s;
     -webkit-transition: opacity 0.3s;
+}   -webkit-transition: opacity 0.3s;
 }
 
 .container button h2, h6 {
@@ -229,12 +229,12 @@ h1 {
 .navbar input{
     width: 50%;
     border-radius: 10px;
-    border: none;
-    padding: 5px;
+    border: none;   padding: 5px;
+    padding-left: 40px;
     background-image: url(../images/search.png);
     background-size: 3%;
     background-repeat: no-repeat;
-    background-position: 99%;
+    background-position: 2%;
 }
 
 .navbar a {
@@ -303,24 +303,24 @@ h1 {
     text-align: right;
 }
 
-
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top 
-
 h1 {
     text-align: center;
 }
-*/
-  padding-top: 3%; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+/* Modal code */
+
+.modal {
+	display: none;  /*Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+    padding-top: 3%; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
@@ -331,6 +331,25 @@ h1 {
 	border: 1px solid #888;
 	width: 80%;
 	border-radius: 10px;
+}
+
+.modal .tags {
+    background-color: #a0ff9c;
+    border:none;
+    border-radius: 10%;
+    outline:none;
+    padding: 15px;
+    margin: 10%;
+    color: black;
+    background-color: #7AC9AB;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 14px;
+    padding: 5px;
+}
+.modal .modal-content h4 {
+    font-weight: 600;
+    font-size: 40px;
 }
 
 .modal .modal-content .modal-body {
@@ -355,26 +374,26 @@ h1 {
 }
 
 .modal .modal-content #modal-image {
-  width: 100%;
-  border-radius: 20px;
+    width: 100%;
+    border-radius: 20px;
 }
 
 
-.modal-content h4 {
-    text-align: center;
-}
 
 /* The Close Button */
 .close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
 }

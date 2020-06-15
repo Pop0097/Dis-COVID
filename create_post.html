@@ -52,111 +52,111 @@
   </section>
 
   <section class="form-area">
-    <div class="container-fluid">
       <div class="form-container center">
-        <form id="add-post-form" class="form add-post-form">
-          <div class="row">
-            <div class="col-12 form-input text-center">
-              <label>Subject:</label><br>
-              <input class="center" type="text" name="subject" placeholder="Enter your subject" required>
+        <form id="add-post-form" class="form add-post-form" style="width: auto;">
+          <div class="container-fluid">
+            <div class="col-6-md">
+              <div class="col-12 form-input text-center">
+                <label>Subject:</label><br>
+                <input class="center" type="text" name="subject" placeholder="Enter your subject" required>
+              </div>
+              <div class="col-12 form-input text-center">
+                <label>Message:</label><br>
+                <textarea class="center" name="message" placeholder="Enter your message" required></textarea>
+              </div>
             </div>
-            <div class="col-12 form-input text-center">
-              <label>Message:</label><br>
-              <textarea class="center" name="message" placeholder="Enter your message" required></textarea>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 form-input text-center">
-              <label>Select Tags (min 1):</label><br>
-            </div>
+            <div class="col-6-md">
+              <div class="col-12 form-input text-center">
+                <label>Select Tags (min 1):</label><br>
+              </div>
 
-            <div class="col-12 form-selector">
-              <select class="center" name="tag1" id="tag-input">
-                <option value="Default">Select a tag</option>
-                <option value="Baking">Baking</option>
-                <option value="Sculpting">Sculpting</option>
-                <option value="Cooking">Cooking</option>
-                <option value="Coding">Coding</option>
-                <option value="Other">Other</option>
-              </select>
-              <input type="text" name="otherTag1" id="otherTag1" style='display:none;' placeholder = "Enter a new tag"/><br>
-              
-              <script>
-                const tag1 = document.getElementsByName("tag1")[0];
-                tag1.addEventListener('click', function(e) {
-                  var val = tag1.value;
-                  var element = document.getElementById('otherTag1');
-                  if (val == 'Other') {
-                    element.style.display = 'block';
-                  } else {
-                    element.style.display = 'none';
-                  }
-                });
-              </script>
-            </div>
+              <div class="col-12 form-selector">
+                <select class="center" name="tag1" id="tag-input">
+                  <option value="Default">Select a tag</option>
+                  <option value="Baking">Baking</option>
+                  <option value="Sculpting">Sculpting</option>
+                  <option value="Cooking">Cooking</option>
+                  <option value="Coding">Coding</option>
+                  <option value="Other">Other</option>
+                </select>
+                <input type="text" name="otherTag1" id="otherTag1" style='display:none;' placeholder = "Enter a new tag"/><br>
+                
+                <script>
+                  const tag1 = document.getElementsByName("tag1")[0];
+                  tag1.addEventListener('click', function(e) {
+                    var val = tag1.value;
+                    var element = document.getElementById('otherTag1');
+                    if (val == 'Other') {
+                      element.style.display = 'block';
+                    } else {
+                      element.style.display = 'none';
+                    }
+                  });
+                </script>
+              </div>
 
-            <div class="col-12 form-selector">
-              <select class="center" name="tag2" id="tag-input">
-                <option value="Default">Select a tag</option>
-                <option value="Baking">Baking</option>
-                <option value="Sculpting">Sculpting</option>
-                <option value="Cooking">Cooking</option>
-                <option value="Coding">Coding</option>
-                <option value="Other">Other</option>
-              </select><br>
-              <input type="text" name="otherTag2" id="otherTag2" style='display:none;' placeholder = "Enter a new tag"/>
-              
-              <script>
-                const tag2 = document.getElementsByName("tag2")[0];
-                tag2.addEventListener('click', function(e) {
-                  var val = tag2.value;
-                  var element = document.getElementById('otherTag2');
-                  if (val == 'Other') {
-                    element.style.display = 'block';
-                  } else {
-                    element.style.display = 'none';
-                  }
-                });
-              </script>
-            </div>
+              <div class="col-12 form-selector">
+                <select class="center" name="tag2" id="tag-input">
+                  <option value="Default">Select a tag</option>
+                  <option value="Baking">Baking</option>
+                  <option value="Sculpting">Sculpting</option>
+                  <option value="Cooking">Cooking</option>
+                  <option value="Coding">Coding</option>
+                  <option value="Other">Other</option>
+                </select><br>
+                <input type="text" name="otherTag2" id="otherTag2" style='display:none;' placeholder = "Enter a new tag"/>
+                
+                <script>
+                  const tag2 = document.getElementsByName("tag2")[0];
+                  tag2.addEventListener('click', function(e) {
+                    var val = tag2.value;
+                    var element = document.getElementById('otherTag2');
+                    if (val == 'Other') {
+                      element.style.display = 'block';
+                    } else {
+                      element.style.display = 'none';
+                    }
+                  });
+                </script>
+              </div>
 
-            <div class="col-12 form-selector">
-              <select class="center" name="tag3" id="tag-input">
-                <option value="Default">Select a tag</option>
-                <option value="Baking">Baking</option>
-                <option value="Sculpting">Sculpting</option>
-                <option value="Cooking">Cooking</option>
-                <option value="Coding">Coding</option>
-                <option value="Other">Other</option>
-              </select>
-              <input type="text" name="otherTag3" id="otherTag3" style='display:none;' placeholder = "Enter a new tag"/><br>
-              
-              <script>
-                const tag3 = document.getElementsByName("tag3")[0];
-                tag3.addEventListener('click', function(e) {
-                  var val = tag3.value;
-                  var element = document.getElementById('otherTag3');
-                  if (val == 'Other') {
-                    element.style.display = 'block';
-                  } else {
-                    element.style.display = 'none';
-                  }
-                });
-              </script>
+              <div class="col-12 form-selector">
+                <select class="center" name="tag3" id="tag-input">
+                  <option value="Default">Select a tag</option>
+                  <option value="Baking">Baking</option>
+                  <option value="Sculpting">Sculpting</option>
+                  <option value="Cooking">Cooking</option>
+                  <option value="Coding">Coding</option>
+                  <option value="Other">Other</option>
+                </select>
+                <input type="text" name="otherTag3" id="otherTag3" style='display:none;' placeholder = "Enter a new tag"/><br>
+                
+                <script>
+                  const tag3 = document.getElementsByName("tag3")[0];
+                  tag3.addEventListener('click', function(e) {
+                    var val = tag3.value;
+                    var element = document.getElementById('otherTag3');
+                    if (val == 'Other') {
+                      element.style.display = 'block';
+                    } else {
+                      element.style.display = 'none';
+                    }
+                  });
+                </script>
 
-            </div>
-            <div class="col-12 form-picture-input text-center">
-              <label>Upload an Image:</label><br>
-              <input name="img-upload" class="center" type="file" value="upload" id="fileButton">
-            </div>
-            <div class="col-12 text-center">
-              <br>
-              <button id="create-post-button">Create Post</button>
-              <p></p>
+              </div>
+              <div class="col-12 form-picture-input text-center">
+                <label>Upload an Image:</label><br>
+                <input name="img-upload" class="center" type="file" value="upload" id="fileButton">
+              </div>
+              <div class="col-12 text-center">
+                <br>
+                <button id="create-post-button">Create Post</button>
+                <p></p>
+              </div>
             </div>
           </div>
         </form>
-      </div>
     </div>
   </section>
     <script src="js/logout.js"></script>

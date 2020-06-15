@@ -24,6 +24,18 @@
         
         <!-- Initializes firebase -->
         <script src="js/initialization.js"></script>
+
+        <script>
+            // listen for auth status changes
+            firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+                    console.log('Redirecting to all_posts.html');
+                    window.location.replace("all_posts.html");
+                } else {
+                    console.log('Not redirecting');
+                }
+            });
+        </script>
     </head>
     <body>
         <div class="navbar" style="margin-bottom:30px;">

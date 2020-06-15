@@ -20,3 +20,5 @@ const db = firebase.firestore();
 
 //Initializes authentication
 const auth = firebase.auth();
+
+console.log('All initialized');

@@ -2,6 +2,9 @@
 var currentUserEmail = "";
 var currentUsername = "";
 var post_counter = 0;
+var confirm = document.getElementById('confirmation-text');
+confirm.style.display = 'none';
+
 
 var timer; //initialized in form.addEventListener
 
@@ -114,13 +117,7 @@ form.addEventListener('submit', function (e) {
     firebase.firestore().collection('users').doc(currentUserEmail).set({
         post_counter: post_counter,
     });
-
-    //after 2 seconds, redirect the user to the home page, where they can see all of the posts
-    timer = window.setTimeout(goToPosts(), 2000);
-}, false);
-
-function goToPosts() {
-    window.clearTimeout(timer);
     console.log('here');
-    window.location.replace("all_posts.html"); //redirects user to home page
-}
+    confirm.style.display = 'block';
+
+}, false);

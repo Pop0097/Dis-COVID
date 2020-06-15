@@ -6,8 +6,8 @@ function updateLogoSize() {
     var w = window.innerWidth;
     //console.log("Width " , w);
     if (w < 830) {
-        document.getElementById('logo-image').src = "../images/short-logo.png";
+        document.getElementById('logo-image').src = "images/short-logo.png";
     } else {
-        document.getElementById('logo-image').src = "../images/logo-long.png";
+        document.getElementById('logo-image').src = "images/logo-long.png";
     }
 }

@@ -89,6 +89,7 @@ body {
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .form button:hover,.form button:active,.form button:focus {
@@ -229,15 +230,10 @@ h1 {
     border-radius: 10px;
     border: none;
     padding: 5px;
-}
-
-.navbar input::after {
     background-image: url(../images/search.png);
-    display: inline-block;
-    height: 20px;
+    background-size: 3%;
     background-repeat: no-repeat;
-    background-position: 96px 0;
-    vertical-align: middle;
+    background-position: 99%;
 }
 
 .navbar a {

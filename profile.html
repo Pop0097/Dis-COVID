@@ -1,80 +1,85 @@
 <!DOCTYPE html>
-    <head>
-        <title>Dis-COVID</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style/style.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
-            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
-            crossorigin="anonymous">
-        
-        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
-        
-        <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
-        
-        <!-- Add Firebase products that you want to use -->
-        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
-        
-        <!-- Initializes Firebase and checks if user is logged in -->
-        <script src="js/initialization.js"></script>
-        <script src="js/check_login_status.js"></script>
-    </head>
-    <body>
-    <div class="navbar" style="margin-bottom: 30px;">
-        <a href="all_posts.html" class="left nav-item help" id="indexHelp"><img src="images/logo-long.png" id="logo-image"></a>
-        <div class="image-link-container">
-            <a href="index.html" id="image-link"><img src="images/login.png" id="logout"></a>
-            <a href="profile.html" id="image-link"><img src="images/profile.png"></a>
-            <a href="create_post.html" id="image-link"><img src="images/create-post-image.png"></a>      
-        </div>
-    </div>
 
-    <section class="title-area" style="margin-bottom: 30px;">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h2>Your Account</h2>
-                </div>
-            </div>
-        </div>
-    </section>
+<head>
+	<title>Dis-COVID</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="stylesheet" href="style/all_posts.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <section class="user-information-area">
+	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+	<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+	<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+	<!-- Add Firebase products that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+
+	<!-- Initializes Firebase and checks if user is logged in -->
+	<script src="js/initialization.js"></script>
+	<script src="js/check_login_status.js"></script>
+</head>
+
+<body>
+	<div class="navbar" style="margin-bottom: 30px;">
+		<a href="all_posts.html" class="left nav-item help" id="indexHelp"><img src="images/logo-long.png"
+				id="logo-image"></a>
+		<div class="image-link-container">
+			<a href="index.html" id="image-link"><img src="images/login.png" id="logout"></a>
+			<a href="profile.html" id="image-link"><img src="images/profile.png"></a>
+			<a href="create_post.html" id="image-link"><img src="images/create-post-image.png"></a>
+		</div>
+	</div>
+
+	<section class="title-area" style="margin-bottom: 30px;">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12 text-center">
+					<h2>Your Account</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="user-information-area">
         <div class="container-fluid">
             <div class="row" style="margin-bottom: 30px;">
-                <div class="col-md-6">
-                    <img src="images/profile.png" width="200px" heigt="200px" style="border-radius:50%; margin-bottom: 30px; margin-left: 50%;" class="position:relative">
+                <div class="col-12 col-md-6">
+                    <img src="images/profile.png" width="200px" heigt="200px" style="border-radius:50%; margin-bottom: 30px; margin-left: 50%;" class="center">
                 </div>
                 <div class="user-information left" style="margin-top: 60px;">
                     <div class="row">
-                        <div class="col-md-6 user-information-field">
+                        <div class="col-6 col-md-6 user-information-field">
                             <p><strong>Username</strong></p>
                         </div>
-                        <div class="col-md-6 user-information">
+                        <div class="col-6 col-md-6 user-information">
                             <p id="user-username"></p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 user-information-field">
+                        <div class="col-6 col-md-6 user-information-field">
                             <p><strong>Email</strong></p>
                         </div>
-                        <div class="col-md-6 user-information">
+                        <div class="col-6 col-md-6 user-information">
                             <p id="user-email"></p>
                         </div>
                     </div>
                 </div>
+                <hr>
             </div>
         </div>
     </section>
 
-    <!-- The Modal -->
+	<!-- The Modal -->
 	<div id="postModal" class="modal">
 		<!-- Modal content -->
 		<div class="modal-content">
-			<span class="close">&times;</span>
-			<h4 id="modal-title" text-align="center">Title</h4>
+            <span class="close">&times;</span>
+			<h4 id="modal-title" class="text-center">Title</h4>
+            <p id="modal-username" class="text-center">Created by Username</p>
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-12 col-md-5">
@@ -83,182 +88,196 @@
 						</div>
 					</div>
 					<div class="col-12 col-md-7">
-						<p id="modal-description">Description</p>
+                        <p id="modal-description">Description</p>
+                        <b>Tags:</b>
+                        <button class="tags" id="modal-t1">Tag 1</button>
+                        <button class="tags" id="modal-t2">Tag 2</button>
+                        <button class="tags" id="modal-t3">Tag 3</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-    <section class="subtitle-area" style="margin-bottom: 30px;">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h2>Your Posts</h2>
-                </div>
-            </div>
-        </div>
-    </section>
+	<section class="subtitle-area" style="margin-bottom: 30px;">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12 text-center">
+					<h2>Your Posts</h2>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    <div class="container">
-        <div class="row" id="all-posts"></div>
-    </div>
-    
-    <script src="js/logout.js"></script>
-    <script src="js/logo.js"></script>
+	<div class="container">
+		<div class="row" id="all-posts"></div>
+	</div>
 
-    <script>
-        //get user information
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                //console.log('user logged in: ', user);
-                //get user email and username
-                var userEmail = user.email;
-                var userUsername = user.displayName; 
-                //pass email and username into function to display them
-                displayUserInformation(userEmail, userUsername); 
-                displayUserPosts(userEmail, userUsername);
-            } else { //if user not logged in, page redirects
-                //console.log('Redirecting to index.html');
-                window.location.replace("index.html");
-            }
-        });
+	<script src="js/logout.js"></script>
+	<script src="js/logo.js"></script>
 
-        function displayUserInformation(userEmail, userUsername){
-            //console.log(userUsername, " ", userEmail);
-            if(userUsername){
-                document.getElementById('user-username').innerHTML = userUsername; //prints username if defined
-            }
-            document.getElementById('user-email').innerHTML = userEmail; //prints email
-        }
-        
-        function displayUserPosts(userEmail, userUsername) {
-            const testList = document.querySelector('#all-posts');
-            testList.innerHTML = "";
-            function renderTest(doc) {
-                let div = document.createElement('div');
-                let a = document.createElement('a');
-                let button = document.createElement('button');
-                let h2 = document.createElement('h2');
-                let image = document.createElement('img');
-                let h6 = document.createElement('h6');
-                let buttonT1 = document.createElement('button');
-                let buttonT2 = document.createElement('button');
-                let buttonT3 = document.createElement('button');
-                let editButton = document.createElement('button');
-                let aEdit = document.createElement('a');
+	<script>
+		//get user information
+		firebase.auth().onAuthStateChanged(user => {
+			if (user) {
+				//console.log('user logged in: ', user);
+				//get user email and username
+				var userEmail = user.email;
+				var userUsername = user.displayName;
+				//pass email and username into function to display them
+				displayUserInformation(userEmail, userUsername);
+				displayUserPosts(userEmail, userUsername);
+			} else { //if user not logged in, page redirects
+				//console.log('Redirecting to index.html');
+				window.location.replace("index.html");
+			}
+		});
 
-                div.className = "col-12 col-lg-4 justify-content-center";
-                a.id = "post-link";
-                aEdit.id = "edit-link";
-                button.className = "post center";
-                buttonT1.className = "tags";
-                buttonT2.className = "tags";
-                buttonT3.className = "tags";
-                editButton.className = "edit";
-                editButton.id = "popup";
-                image.id = "post-one-img";
+		function displayUserInformation(userEmail, userUsername) {
+			//console.log(userUsername, " ", userEmail);
+			if (userUsername) {
+				document.getElementById('user-username').innerHTML = userUsername; //prints username if defined
+			}
+			document.getElementById('user-email').innerHTML = userEmail; //prints email
+		}
 
-                buttonT1.innerHTML=doc.data().tag1;
-                buttonT2.innerHTML=doc.data().tag2;
-                buttonT3.innerHTML=doc.data().tag3;
-                editButton.innerHTML="Edit Post";
-                if (doc.data().tag1=="")
-                {
-                    buttonT1.style = "display: none;";
-                }
-                if (doc.data().tag2=="")
-                {
-                    buttonT2.style = "display: none;";
-                }
-                if (doc.data().tag3=="")
-                {
-                    buttonT3.style = "display: none;";
-                }
-                //a.href = doc.data().img_url;
-                aEdit.href = "edit_post.html";
-                h2.innerHTML = doc.data().subject;
-                image.src = doc.data().img_url;
-                h6.innerHTML = "Created by: " + doc.data().user;
+		function displayUserPosts(userEmail, userUsername) {
+			const postList = document.querySelector('#all-posts');
+			postList.innerHTML = "";
+			function renderTest(doc) {
+				/* Define variables -- what are you going to display */
+				let div = document.createElement('div');
+				let a = document.createElement('a');
+				let button = document.createElement('button');
+				let h2 = document.createElement('h2');
+				let image = document.createElement('img');
+				let h6 = document.createElement('h6');
+				let buttonT1 = document.createElement('button');
+				let buttonT2 = document.createElement('button');
+				let buttonT3 = document.createElement('button');
 
-                button.appendChild(h2);
-                button.appendChild(image);
-                button.appendChild(h6);
+				// a.data1 = doc.data().subject;
+				// a.data2 = doc.data().message;
 
-                // only adds buttons if the tag is not "Default"
-                if(doc.data().tag1 != "Default"){
-                    button.appendChild(buttonT1);
-                }
-                if(doc.data().tag2 != "Default"){
-                    button.appendChild(buttonT2);
-                }
-                if(doc.data().tag3 != "Default"){
-                    button.appendChild(buttonT3);
+				/* Define metadata -- e.g. classes, ids*/
+				div.className = "col-12 col-lg-4 justify-content-center post-entry";
+				a.className = "post-link";
+				button.className = "post center";
+				buttonT1.className = "tags";
+				buttonT2.className = "tags";
+				buttonT3.className = "tags";
+				image.id = "post-one-img";
+
+				buttonT1.innerHTML = doc.data().tag1;
+				buttonT2.innerHTML = doc.data().tag2;
+				buttonT3.innerHTML = doc.data().tag3;
+
+				if (doc.data().tag1 == "") {
+					buttonT1.style = "display: none;";
 				}
-				
-				button.addEventListener('click', function(e) {
-				 	createOnClick(doc.data().subject, doc.data().message, doc.data().img_url);
+				if (doc.data().tag2 == "") {
+					buttonT2.style = "display: none;";
+				}
+				if (doc.data().tag3 == "") {
+					buttonT3.style = "display: none;";
+				}
+				// a.href = doc.data().img_url;
+				h2.innerHTML = doc.data().subject;
+				image.src = doc.data().img_url;
+				h6.innerHTML = "Created by: " + doc.data().user;
+
+				button.appendChild(h2);
+				button.appendChild(image);
+				button.appendChild(h6);
+				if (doc.data().tag1 != "Default") {
+					button.appendChild(buttonT1);
+				}
+				if (doc.data().tag2 != "Default") {
+					button.appendChild(buttonT2);
+				}
+				if (doc.data().tag3 != "Default") {
+					button.appendChild(buttonT3);
+				}
+
+				button.addEventListener('click', function (e) {
+					createOnClick(doc.data().subject, doc.data().message, doc.data().img_url, doc.data().user, doc.data().tag1, doc.data().tag2, doc.data().tag3);
 				});
 
-                a.appendChild(button);
-                aEdit.appendChild(editButton);
+				a.appendChild(button);
+				div.appendChild(a);
 
-                div.appendChild(a);
-                div.appendChild(aEdit);
-                
-                testList.appendChild(div);
-            }
-            
+				postList.appendChild(div);
+			}
+			
             //prints all posts associated with user
             db.collection('posts').where('user_email', '==', userEmail).get().then(snapshot => {
                 snapshot.forEach(doc => {
                     console.log(doc.id, '=>', doc.data().img_url);
                     renderTest(doc);
-                    createOnClick(doc.data().subject, doc.data().message, doc.data().img_url);
                 });
             })
             .catch(err => {
                 console.log('Error getting documents', err);
-            });        
-        }
+            }); 				
+		}
 
-        function createOnClick(subject, msg, img_src) {
-            var modal = document.getElementById("postModal");
-            console.log("got modal", modal);
-            // Get the button that opens the modal
-            var links = document.getElementsByClassName("post-link");
-            console.log("got button", links);
-            
-            document.getElementById("modal-title").innerHTML = subject;
-            document.getElementById("modal-image").src = img_src; 
+		function createOnClick(subject, msg, img_src, username, tag1, tag2, tag3) {
+			var modal = document.getElementById("postModal");
+			console.log("got modal", modal);
+			// Get the button that opens the modal
+			var links = document.getElementsByClassName("post-link");
+			console.log("got button", links);
+
+			document.getElementById("modal-title").innerHTML = subject;
+			document.getElementById("modal-image").src = img_src;
+			document.getElementById("modal-username").innerHTML = ("Created by: " + username);
             document.getElementById("modal-description").innerHTML = msg;
+            if (tag1 != "Default") {
+                document.getElementById("modal-t1").innerHTML = tag1;
+            }
+            else {
+                document.getElementById("modal-t1").style = "display: none";
+            }
+            if (tag2 != "Default") {
+                document.getElementById("modal-t2").innerHTML = tag2;
+            }
+            else {
+                document.getElementById("modal-t2").style = "display: none";
+            }
+            if (tag3 != "Default") {
+                document.getElementById("modal-t3").innerHTML = tag3;
+            }
+            else {
+                document.getElementById("modal-t3").style = "display: none";
+            }
 
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-            console.log("got span");
-            
-            for(var i = 0; i < links.length; i++) {
-                // When the user clicks the button, open the modal 
-                links[i].onclick = function() {
-                console.log("hello");
-                modal.style.display = "block";
-                if (i < links.length) modal.h4.innerHTML = links[i].button.h2.value;
-                console.log("button " + i + " is clicked");
-                }
-            }
-            
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
-            
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        }
-    </script>
-    </body>
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+			console.log("got span");
+
+			for (var i = 0; i < links.length; i++) {
+				// When the user clicks the button, open the modal 
+				links[i].onclick = function () {
+					console.log("hello");
+					modal.style.display = "block";
+					if (i < links.length) modal.h4.innerHTML = links[i].button.h2.value;
+					console.log("button " + i + " is clicked");
+				}
+			}
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function () {
+				modal.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function (event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+		}
+	</script>
+</body>
+
 </html>

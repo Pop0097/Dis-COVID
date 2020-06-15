@@ -140,7 +140,6 @@ body {
 .container .post-entry {
     min-height: 300px;
 }
-
 .container button {
     background-color: #a0ff9c;
     border:none;
@@ -166,6 +165,7 @@ body {
     opacity: 1;
     transition: opacity 0.3s;
     -webkit-transition: opacity 0.3s;
+}   -webkit-transition: opacity 0.3s;
 }
 
 .container button h2, h6 {
@@ -229,8 +229,7 @@ h1 {
 .navbar input{
     width: 50%;
     border-radius: 10px;
-    border: none;
-    padding: 5px;
+    border: none;   padding: 5px;
     padding-left: 40px;
     background-image: url(../images/search.png);
     background-size: 3%;
@@ -301,5 +300,100 @@ h1 {
 
 .user-information-field{
     border-right: 1px solid #b0b0b0;
+    text-align: right;
+}
+
+h1 {
+    text-align: center;
+}
+
+/* Modal code */
+
+.modal {
+	display: none;  /*Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+    padding-top: 3%; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal .modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	border-radius: 10px;
+}
+
+.modal .tags {
+    background-color: #a0ff9c;
+    border:none;
+    border-radius: 10%;
+    outline:none;
+    padding: 15px;
+    margin: 10%;
+    color: black;
+    background-color: #7AC9AB;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 14px;
+    padding: 5px;
+}
+.modal .modal-content h4 {
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.modal .modal-content .modal-body {
+	max-height: calc(100vh - 210px);
+	overflow-y: auto;
+}
+
+.modal .modal-content .image-container {
+  max-width: 90% !important; 
+}
+
+@media (max-width:756px){
+  .modal .modal-content .image-container {
+    max-width: 60% !important; 
+  }
+}
+
+@media (max-width:576px){
+  .modal .modal-content .image-container {
+    max-width: 100% !important; 
+  }
+}
+
+.modal .modal-content #modal-image {
+    width: 100%;
+    border-radius: 20px;
+}
+
+
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
     text-align: left;
+    text-decoration: none;
+    cursor: pointer;
 }

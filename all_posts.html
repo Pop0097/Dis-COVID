@@ -1,241 +1,267 @@
 <!DOCTYPE html>
-    <head>
-        <title>Dis-COVID</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style/style.css">
-        <link rel="stylesheet" href="style/all_posts.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
-            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
-            crossorigin="anonymous">
-        
-        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
-        
-        <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
-        
-        <!-- Add Firebase products that you want to use -->
-        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
-        
-        <script src="js/initialization.js"></script>
-        <script src="js/check_login_status.js"></script>
-    </head>
-    
-    <body>
-        <div class="navbar">
-            <a href="all_posts.html" class="left nav-item help" id="indexHelp"><img src="images/logo-long.png" id="logo-image"></a>
-            <input type="search" placeholder="Search" id="search-bar">
-            <div class="image-link-container">
-                <a href="index.html" id="image-link"><img src="images/login.png" id="logout"></a>
-                <a href="profile.html" id="image-link"><img src="images/profile.png"></a>
-                <a href="create_post.html" id="image-link"><img src="images/create-post-image.png"></a>       
-            </div>
-        </div>
 
-        <!-- The Modal -->
-        <div id="postModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h4 id="modal-title" text-align="center">Title</h4>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-12 col-md-5">
-                            <div class="image-container center">
-                                <img id="modal-image" class="center"></img>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-7">
-                            <p id="modal-description">Description</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<head>
+	<title>Dis-COVID</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="stylesheet" href="style/all_posts.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-        <p id="go-back-text" style="display: none;"><a href="all_posts.html" id="go-back-link">Go back</a></p>  
-        <h1 id="post-result-header"></h1>
-        <div class="container container-fluid">
-            <div class="row" id="all-posts"></div>
-        </div>
+	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
 
-        <!--Displays all of the posts that are currently in the 'posts' database-->
-        <script>
-            const search_bar = document.getElementById("search-bar");
-            var tag = "";
-            search_bar.addEventListener("change", function(e) {
-                e.preventDefault(); //prevent refresh
-                tag = search_bar.value;
-                console.log(tag);
-                displayAllPosts(titleCase(tag));
-            });
+	<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+	<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
 
-            displayAllPosts("");
+	<!-- Add Firebase products that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
 
-            function titleCase(str) {
-                str = str.toLowerCase().split(' ');
-                for (var i = 0; i < str.length; i++) {
-                    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
-                }
-                return str.join(' ');
-            }
+	<script src="js/initialization.js"></script>
+	<script src="js/check_login_status.js"></script>
+</head>
 
-            function displayAllPosts(tag) {
-                const postList = document.querySelector('#all-posts');
-                postList.innerHTML = "";
-                function renderTest(doc) {
-                    /* Define variables -- what are you going to display */
-                    let div = document.createElement('div');
-                    let a = document.createElement('a');
-                    let button = document.createElement('button');
-                    let h2 = document.createElement('h2');
-                    let image = document.createElement('img');
-                    let h6 = document.createElement('h6');
-                    let buttonT1 = document.createElement('button');
-                    let buttonT2 = document.createElement('button');
-                    let buttonT3 = document.createElement('button');
+<body>
+	<div class="navbar">
+		<a href="all_posts.html" class="left nav-item help" id="indexHelp"><img src="images/logo-long.png"
+				id="logo-image"></a>
+		<input type="search" placeholder="Search" id="search-bar">
+		<div class="image-link-container">
+			<a href="index.html" id="image-link"><img src="images/login.png" id="logout"></a>
+			<a href="profile.html" id="image-link"><img src="images/profile.png"></a>
+			<a href="create_post.html" id="image-link"><img src="images/create-post-image.png"></a>
+		</div>
+	</div>
 
-					// a.data1 = doc.data().subject;
-					// a.data2 = doc.data().message;
+	<!-- The Modal -->
+	<div id="postModal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+            <span class="close">&times;</span>
+			<h4 id="modal-title" class="text-center">Title</h4>
+            <p id="modal-username" class="text-center">Created by Username</p>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-12 col-md-5">
+						<div class="image-container center">
+							<img id="modal-image" class="center"></img>
+						</div>
+					</div>
+					<div class="col-12 col-md-7">
+                        <p id="modal-description">Description</p>
+                        <b>Tags:</b>
+                        <button class="tags" id="modal-t1">Tag 1</button>
+                        <button class="tags" id="modal-t2">Tag 2</button>
+                        <button class="tags" id="modal-t3">Tag 3</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-                    /* Define metadata -- e.g. classes, ids*/
-                    div.className = "col-12 col-lg-4 justify-content-center post-entry";
-                    a.className = "post-link";
-                    button.className = "post center";
-                    buttonT1.className = "tags";
-                    buttonT2.className = "tags";
-                    buttonT3.className = "tags";
-                    image.id = "post-one-img";
+	<p id="go-back-text" style="display: none;"><a href="all_posts.html" id="go-back-link">Go back</a></p>
+	<h1 id="post-result-header"></h1>
+	<div class="container container-fluid">
+		<div class="row" id="all-posts"></div>
+	</div>
 
-                    buttonT1.innerHTML = doc.data().tag1;
-                    buttonT2.innerHTML = doc.data().tag2;
-                    buttonT3.innerHTML = doc.data().tag3;
+	<!--Displays all of the posts that are currently in the 'posts' database-->
+	<script>
+		const search_bar = document.getElementById("search-bar");
+		var tag = "";
+		search_bar.addEventListener("change", function (e) {
+			e.preventDefault(); //prevent refresh
+			tag = search_bar.value;
+			console.log(tag);
+			displayAllPosts(titleCase(tag));
+		});
 
-                    if (doc.data().tag1 == "") {
-                        buttonT1.style = "display: none;";
-                    }
-                    if (doc.data().tag2 == "") {
-                        buttonT2.style = "display: none;";
-                    }
-                    if (doc.data().tag3 == "") {
-                        buttonT3.style = "display: none;";
-                    }
-                    // a.href = doc.data().img_url;
-                    h2.innerHTML = doc.data().subject;
-                    image.src = doc.data().img_url;
-                    h6.innerHTML = "Created by: " + doc.data().user;
+		displayAllPosts("");
 
-                    button.appendChild(h2);
-                    button.appendChild(image);
-                    button.appendChild(h6);
-                    if(doc.data().tag1 != "Default"){
-                        button.appendChild(buttonT1);
-                    }
-                    if(doc.data().tag2 != "Default"){
-                        button.appendChild(buttonT2);
-                    }
-                    if(doc.data().tag3 != "Default"){
-                        button.appendChild(buttonT3);
-                    }
+		function titleCase(str) {
+			str = str.toLowerCase().split(' ');
+			for (var i = 0; i < str.length; i++) {
+				str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+			}
+			return str.join(' ');
+		}
 
-					button.addEventListener('click', function(e) {
-						createOnClick(doc.data().subject, doc.data().message, doc.data().img_url);
+		function displayAllPosts(tag) {
+			const postList = document.querySelector('#all-posts');
+			postList.innerHTML = "";
+			function renderTest(doc) {
+				/* Define variables -- what are you going to display */
+				let div = document.createElement('div');
+				let a = document.createElement('a');
+				let button = document.createElement('button');
+				let h2 = document.createElement('h2');
+				let image = document.createElement('img');
+				let h6 = document.createElement('h6');
+				let buttonT1 = document.createElement('button');
+				let buttonT2 = document.createElement('button');
+				let buttonT3 = document.createElement('button');
+
+				// a.data1 = doc.data().subject;
+				// a.data2 = doc.data().message;
+
+				/* Define metadata -- e.g. classes, ids*/
+				div.className = "col-12 col-lg-4 justify-content-center post-entry";
+				a.className = "post-link";
+				button.className = "post center";
+				buttonT1.className = "tags";
+				buttonT2.className = "tags";
+				buttonT3.className = "tags";
+				image.id = "post-one-img";
+
+				buttonT1.innerHTML = doc.data().tag1;
+				buttonT2.innerHTML = doc.data().tag2;
+				buttonT3.innerHTML = doc.data().tag3;
+
+				if (doc.data().tag1 == "") {
+					buttonT1.style = "display: none;";
+				}
+				if (doc.data().tag2 == "") {
+					buttonT2.style = "display: none;";
+				}
+				if (doc.data().tag3 == "") {
+					buttonT3.style = "display: none;";
+				}
+				// a.href = doc.data().img_url;
+				h2.innerHTML = doc.data().subject;
+				image.src = doc.data().img_url;
+				h6.innerHTML = "Created by: " + doc.data().user;
+
+				button.appendChild(h2);
+				button.appendChild(image);
+				button.appendChild(h6);
+				if (doc.data().tag1 != "Default") {
+					button.appendChild(buttonT1);
+				}
+				if (doc.data().tag2 != "Default") {
+					button.appendChild(buttonT2);
+				}
+				if (doc.data().tag3 != "Default") {
+					button.appendChild(buttonT3);
+				}
+
+				button.addEventListener('click', function (e) {
+					createOnClick(doc.data().subject, doc.data().message, doc.data().img_url, doc.data().user, doc.data().tag1, doc.data().tag2, doc.data().tag3);
+				});
+
+				a.appendChild(button);
+				div.appendChild(a);
+
+				postList.appendChild(div);
+			}
+
+			if (tag.length == 0) {
+				document.getElementById('go-back-text').style.display = 'none';
+				document.getElementById("post-result-header").innerHTML =
+					"All posts:";
+				db.collection('posts').get().then(snapshot => {
+					snapshot.forEach(doc => {
+						console.log(doc.id, '=>', doc.data().img_url);
+						renderTest(doc);
 					});
+				}).catch(err => {
+					console.log('Error getting documents', err);
+				});
+			} else {
+				document.getElementById('go-back-text').style.display = 'block';
+				document.getElementById("post-result-header").innerHTML =
+					"These are the posts that include the tag '" + tag + "':";
+				console.log("you searched something");
+				db.collection('posts').where('tag1', '==', tag).get().then(snapshot => {
+					snapshot.forEach(doc => {
+						console.log(doc.id, '=>', doc.data().img_url);
+						renderTest(doc);
+					});
+				}).catch(err => {
+					console.log('Error getting documents', err);
+				});
 
-                    a.appendChild(button);
-                    div.appendChild(a);
-                    
-                    postList.appendChild(div);
-                }
-                
-                if (tag.length == 0) {
-                    document.getElementById('go-back-text').style.display = 'none';
-                    document.getElementById("post-result-header").innerHTML = 
-                    "All posts:";
-                    db.collection('posts').get().then(snapshot => {
-                        snapshot.forEach(doc => {
-                            console.log(doc.id, '=>', doc.data().img_url);
-                            renderTest(doc);
-                        });
-                    }).catch(err => {
-                        console.log('Error getting documents', err);
-                    });
-                } else {
-                    document.getElementById('go-back-text').style.display = 'block';
-                    document.getElementById("post-result-header").innerHTML = 
-                    "These are the posts that include the tag '" + tag+"':";
-                    console.log("you searched something");
-                    db.collection('posts').where('tag1', '==', tag).get().then(snapshot => {
-                        snapshot.forEach(doc => {
-                            console.log(doc.id, '=>', doc.data().img_url);
-                            renderTest(doc);
-                        });
-                    }).catch(err => {
-                        console.log('Error getting documents', err);
-                    });
+				db.collection('posts').where('tag2', '==', tag).get().then(snapshot => {
+					snapshot.forEach(doc => {
+						console.log(doc.id, '=>', doc.data().img_url);
+						renderTest(doc);
+					});
+				}).catch(err => {
+					console.log('Error getting documents', err);
+				});
 
-                    db.collection('posts').where('tag2', '==', tag).get().then(snapshot => {
-                        snapshot.forEach(doc => {
-                            console.log(doc.id, '=>', doc.data().img_url);
-                            renderTest(doc);
-                        });
-                    }).catch(err => {
-                        console.log('Error getting documents', err);
-                    });
+				db.collection('posts').where('tag3', '==', tag).get().then(snapshot => {
+					snapshot.forEach(doc => {
+						console.log(doc.id, '=>', doc.data().img_url);
+						renderTest(doc);
+						//createOnClick(doc.data().subject, doc.data().message, doc.data().img_url);
+					});
+				}).catch(err => {
+					console.log('Error getting documents', err);
+				});
+			}
+		}
 
-                    db.collection('posts').where('tag3', '==', tag).get().then(snapshot => {
-                        snapshot.forEach(doc => {
-                            console.log(doc.id, '=>', doc.data().img_url);
-                            renderTest(doc);
-                            createOnClick(doc.data().subject, doc.data().message, doc.data().img_url);
-                        });
-                    }).catch(err => {
-                        console.log('Error getting documents', err);
-                    });
-                }
+		function createOnClick(subject, msg, img_src, username, tag1, tag2, tag3) {
+			var modal = document.getElementById("postModal");
+			console.log("got modal", modal);
+			// Get the button that opens the modal
+			var links = document.getElementsByClassName("post-link");
+			console.log("got button", links);
+
+			document.getElementById("modal-title").innerHTML = subject;
+			document.getElementById("modal-image").src = img_src;
+			document.getElementById("modal-username").innerHTML = ("Created by: " + username);
+            document.getElementById("modal-description").innerHTML = msg;
+            if (tag1 != "Default") {
+                document.getElementById("modal-t1").innerHTML = tag1;
+            }
+            else {
+                document.getElementById("modal-t1").style = "display: none";
+            }
+            if (tag2 != "Default") {
+                document.getElementById("modal-t2").innerHTML = tag2;
+            }
+            else {
+                document.getElementById("modal-t2").style = "display: none";
+            }
+            if (tag3 != "Default") {
+                document.getElementById("modal-t3").innerHTML = tag3;
+            }
+            else {
+                document.getElementById("modal-t3").style = "display: none";
             }
 
-            function createOnClick(subject, msg, img_src) {
-				var modal = document.getElementById("postModal");
-                console.log("got modal", modal);
-                // Get the button that opens the modal
-                var links = document.getElementsByClassName("post-link");
-                console.log("got button", links);
-				
-                document.getElementById("modal-title").innerHTML = subject;
-                document.getElementById("modal-image").src = img_src; 
-				document.getElementById("modal-description").innerHTML = msg;
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+			console.log("got span");
 
-                // Get the <span> element that closes the modal
-                var span = document.getElementsByClassName("close")[0];
-                console.log("got span");
-                
-                for(var i = 0; i < links.length; i++) {
-                    // When the user clicks the button, open the modal 
-                    links[i].onclick = function() {
+			for (var i = 0; i < links.length; i++) {
+				// When the user clicks the button, open the modal 
+				links[i].onclick = function () {
 					console.log("hello");
 					modal.style.display = "block";
 					if (i < links.length) modal.h4.innerHTML = links[i].button.h2.value;
-                    console.log("button " + i + " is clicked");
-                    }
-                }
-                
-                // When the user clicks on <span> (x), close the modal
-                span.onclick = function() {
-                    modal.style.display = "none";
-                }
-                
-                // When the user clicks anywhere outside of the modal, close it
-                window.onclick = function(event) {
-                    if (event.target == modal) {
-                        modal.style.display = "none";
-                    }
-                }
-            }
-        </script>
+					console.log("button " + i + " is clicked");
+				}
+			}
 
-        <script src="js/logout.js"></script>
-        <script src="js/logo.js"></script>
-    </body>
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function () {
+				modal.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function (event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+		}
+	</script>
+
+	<script src="js/logout.js"></script>
+	<script src="js/logo.js"></script>
+</body>
+
 </html>

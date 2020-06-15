@@ -39,6 +39,7 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h4 id="modal-title" text-align="center">Title</h4>
+                
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12 col-md-5">
@@ -47,6 +48,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-7">
+                            <p id="modal-username">Created by Username</p>
                             <p id="modal-description">Description</p>
                         </div>
                     </div>
@@ -140,7 +142,7 @@
                     }
 
 					button.addEventListener('click', function(e) {
-						createOnClick(doc.data().subject, doc.data().message, doc.data().img_url);
+						createOnClick(doc.data().subject, doc.data().message, doc.data().img_url, doc.data().user);
 					});
 
                     a.appendChild(button);
@@ -188,7 +190,7 @@
                         snapshot.forEach(doc => {
                             console.log(doc.id, '=>', doc.data().img_url);
                             renderTest(doc);
-                            createOnClick(doc.data().subject, doc.data().message, doc.data().img_url);
+                            //createOnClick(doc.data().subject, doc.data().message, doc.data().img_url);
                         });
                     }).catch(err => {
                         console.log('Error getting documents', err);
@@ -196,7 +198,7 @@
                 }
             }
 
-            function createOnClick(subject, msg, img_src) {
+            function createOnClick(subject, msg, img_src, username) {
 				var modal = document.getElementById("postModal");
                 console.log("got modal", modal);
                 // Get the button that opens the modal
@@ -205,6 +207,7 @@
 				
                 document.getElementById("modal-title").innerHTML = subject;
                 document.getElementById("modal-image").src = img_src; 
+                document.getElementById("modal-username").innerHTML = ("Created by: "+username);
 				document.getElementById("modal-description").innerHTML = msg;
 
                 // Get the <span> element that closes the modal

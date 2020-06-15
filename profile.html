@@ -125,6 +125,7 @@
                 let buttonT1 = document.createElement('button');
                 let buttonT2 = document.createElement('button');
                 let buttonT3 = document.createElement('button');
+                let editButton = document.createElement('button');
 
                 div.className = "col-12 col-lg-4 justify-content-center";
                 a.id = "post-link";
@@ -132,11 +133,14 @@
                 buttonT1.className = "tags";
                 buttonT2.className = "tags";
                 buttonT3.className = "tags";
+                editButton.className = "edit";
+                editButton.id = "popup";
                 image.id = "post-one-img";
 
                 buttonT1.innerHTML=doc.data().tag1;
                 buttonT2.innerHTML=doc.data().tag2;
                 buttonT3.innerHTML=doc.data().tag3;
+                editButton.innerHTML="Edit Post";
                 if (doc.data().tag1=="")
                 {
                     buttonT1.style = "display: none;";
@@ -171,6 +175,7 @@
                 a.appendChild(button);
 
                 div.appendChild(a);
+                div.appendChild(editButton);
                 
                 testList.appendChild(div);
             }

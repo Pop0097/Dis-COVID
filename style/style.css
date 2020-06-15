@@ -230,10 +230,11 @@ h1 {
     border-radius: 10px;
     border: none;
     padding: 5px;
+    padding-left: 40px;
     background-image: url(../images/search.png);
     background-size: 3%;
     background-repeat: no-repeat;
-    background-position: 99%;
+    background-position: 2%;
 }
 
 .navbar a {
@@ -299,5 +300,5 @@ h1 {
 
 .user-information-field{
     border-right: 1px solid #b0b0b0;
-    text-align: right;
+    text-align: left;
 }

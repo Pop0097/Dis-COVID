@@ -3,7 +3,6 @@
         <title>Dis-COVID</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style/style.css">
-        <link rel="stylesheet" href="style/login.css">
         <link rel="stylesheet" href="style/all_posts.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
             integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
@@ -31,6 +30,17 @@
                 <a href="index.html" id="image-link"><img src="images/login.png" id="logout"></a>
                 <a href="profile.html" id="image-link"><img src="images/profile.png"></a>
                 <a href="create_post.html" id="image-link"><img src="images/create-post-image.png"></a>       
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div id="postModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h4>Title</h4>
+                <!-- <img src=""> -->
+                <p>Description</p>
             </div>
         </div>
 
@@ -78,7 +88,7 @@
 
                     /* Define metadata -- e.g. classes, ids*/
                     div.className = "col-12 col-lg-4 justify-content-center post-entry";
-                    a.id = "post-link";
+                    a.className = "post-link";
                     button.className = "post center";
                     buttonT1.className = "tags";
                     buttonT2.className = "tags";

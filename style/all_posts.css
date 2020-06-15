@@ -21,7 +21,7 @@ h1 {
   display: none;  /*Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 3%; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -30,16 +30,43 @@ h1 {
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-  
+
 /* Modal Content */
 .modal .modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  border-radius: 10px;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	border-radius: 10px;
 }
+
+.modal .modal-content .modal-body {
+	max-height: calc(100vh - 210px);
+	overflow-y: auto;
+}
+
+.modal .modal-content .image-container {
+  max-width: 90% !important; 
+}
+
+@media (max-width:756px){
+  .modal .modal-content .image-container {
+    max-width: 60% !important; 
+  }
+}
+
+@media (max-width:576px){
+  .modal .modal-content .image-container {
+    max-width: 100% !important; 
+  }
+}
+
+.modal .modal-content #modal-image {
+  width: 100%;
+  border-radius: 20px;
+}
+
 
 .modal-content h4 {
     text-align: center;

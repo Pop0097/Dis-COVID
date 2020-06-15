@@ -38,9 +38,19 @@
             <!-- Modal content -->
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <h4>Title</h4>
-                <!-- <img src=""> -->
-                <p>Description</p>
+                <h4 id="modal-title" text-align="center">Title</h4>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 col-md-5">
+                            <div class="image-container center">
+                                <img id="modal-image" class="center"></img>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-7">
+                            <p id="modal-description">Description</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -86,6 +96,9 @@
                     let buttonT2 = document.createElement('button');
                     let buttonT3 = document.createElement('button');
 
+					// a.data1 = doc.data().subject;
+					// a.data2 = doc.data().message;
+
                     /* Define metadata -- e.g. classes, ids*/
                     div.className = "col-12 col-lg-4 justify-content-center post-entry";
                     a.className = "post-link";
@@ -126,6 +139,10 @@
                         button.appendChild(buttonT3);
                     }
 
+					button.addEventListener('click', function(e) {
+						createOnClick(doc.data().subject, doc.data().message, doc.data().img_url);
+					});
+
                     a.appendChild(button);
                     div.appendChild(a);
                     
@@ -138,9 +155,8 @@
                     "All posts:";
                     db.collection('posts').get().then(snapshot => {
                         snapshot.forEach(doc => {
-                        console.log(doc.id, '=>', doc.data().img_url);
-                        renderTest(doc);
-                        createOnClick();
+                            console.log(doc.id, '=>', doc.data().img_url);
+                            renderTest(doc);
                         });
                     }).catch(err => {
                         console.log('Error getting documents', err);
@@ -152,9 +168,8 @@
                     console.log("you searched something");
                     db.collection('posts').where('tag1', '==', tag).get().then(snapshot => {
                         snapshot.forEach(doc => {
-                        console.log(doc.id, '=>', doc.data().img_url);
-                        renderTest(doc);
-                        createOnClick();
+                            console.log(doc.id, '=>', doc.data().img_url);
+                            renderTest(doc);
                         });
                     }).catch(err => {
                         console.log('Error getting documents', err);
@@ -162,9 +177,8 @@
 
                     db.collection('posts').where('tag2', '==', tag).get().then(snapshot => {
                         snapshot.forEach(doc => {
-                        console.log(doc.id, '=>', doc.data().img_url);
-                        renderTest(doc);
-                        createOnClick();
+                            console.log(doc.id, '=>', doc.data().img_url);
+                            renderTest(doc);
                         });
                     }).catch(err => {
                         console.log('Error getting documents', err);
@@ -172,9 +186,9 @@
 
                     db.collection('posts').where('tag3', '==', tag).get().then(snapshot => {
                         snapshot.forEach(doc => {
-                        console.log(doc.id, '=>', doc.data().img_url);
-                        renderTest(doc);
-                        createOnClick();
+                            console.log(doc.id, '=>', doc.data().img_url);
+                            renderTest(doc);
+                            createOnClick(doc.data().subject, doc.data().message, doc.data().img_url);
                         });
                     }).catch(err => {
                         console.log('Error getting documents', err);
@@ -182,21 +196,27 @@
                 }
             }
 
-            function createOnClick() {
-                var modal = document.getElementById("postModal");
-                console.log("got modal", modal)
+            function createOnClick(subject, msg, img_src) {
+				var modal = document.getElementById("postModal");
+                console.log("got modal", modal);
                 // Get the button that opens the modal
                 var links = document.getElementsByClassName("post-link");
                 console.log("got button", links);
-                
+				
+                document.getElementById("modal-title").innerHTML = subject;
+                document.getElementById("modal-image").src = img_src; 
+				document.getElementById("modal-description").innerHTML = msg;
+
                 // Get the <span> element that closes the modal
                 var span = document.getElementsByClassName("close")[0];
-                console.log("got span")
+                console.log("got span");
                 
                 for(var i = 0; i < links.length; i++) {
                     // When the user clicks the button, open the modal 
                     links[i].onclick = function() {
-                    modal.style.display = "block";
+					console.log("hello");
+					modal.style.display = "block";
+					if (i < links.length) modal.h4.innerHTML = links[i].button.h2.value;
                     console.log("button " + i + " is clicked");
                     }
                 }

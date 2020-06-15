@@ -69,6 +69,26 @@
         </div>
     </section>
 
+    <!-- The Modal -->
+	<div id="postModal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<h4 id="modal-title" text-align="center">Title</h4>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-12 col-md-5">
+						<div class="image-container center">
+							<img id="modal-image" class="center"></img>
+						</div>
+					</div>
+					<div class="col-12 col-md-7">
+						<p id="modal-description">Description</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
     <section class="subtitle-area" style="margin-bottom: 30px;">
         <div class="container-fluid">
@@ -85,7 +105,6 @@
     </div>
     
     <script src="js/logout.js"></script>
-    <script src="js/profile.js"></script>
     <script src="js/logo.js"></script>
 
     <script>
@@ -113,7 +132,7 @@
             document.getElementById('user-email').innerHTML = userEmail; //prints email
         }
         
-        function displayUserPosts(userEmail, userUsername){
+        function displayUserPosts(userEmail, userUsername) {
             const testList = document.querySelector('#all-posts');
             testList.innerHTML = "";
             function renderTest(doc) {
@@ -127,9 +146,11 @@
                 let buttonT2 = document.createElement('button');
                 let buttonT3 = document.createElement('button');
                 let editButton = document.createElement('button');
+                let aEdit = document.createElement('a');
 
                 div.className = "col-12 col-lg-4 justify-content-center";
                 a.id = "post-link";
+                aEdit.id = "edit-link";
                 button.className = "post center";
                 buttonT1.className = "tags";
                 buttonT2.className = "tags";
@@ -154,7 +175,8 @@
                 {
                     buttonT3.style = "display: none;";
                 }
-                a.href = doc.data().img_url;
+                //a.href = doc.data().img_url;
+                aEdit.href = "edit_post.html";
                 h2.innerHTML = doc.data().subject;
                 image.src = doc.data().img_url;
                 h6.innerHTML = "Created by: " + doc.data().user;
@@ -163,7 +185,7 @@
                 button.appendChild(image);
                 button.appendChild(h6);
 
-                //only adds buttons if the tag is not "Default"
+                // only adds buttons if the tag is not "Default"
                 if(doc.data().tag1 != "Default"){
                     button.appendChild(buttonT1);
                 }
@@ -172,25 +194,70 @@
                 }
                 if(doc.data().tag3 != "Default"){
                     button.appendChild(buttonT3);
-                }
+				}
+				
+				button.addEventListener('click', function(e) {
+				 	createOnClick(doc.data().subject, doc.data().message, doc.data().img_url);
+				});
+
                 a.appendChild(button);
+                aEdit.appendChild(editButton);
 
                 div.appendChild(a);
-                div.appendChild(editButton);
+                div.appendChild(aEdit);
                 
                 testList.appendChild(div);
             }
             
             //prints all posts associated with user
-            db.collection('posts').where('user', '==', userEmail).get().then(snapshot => {
+            db.collection('posts').where('user_email', '==', userEmail).get().then(snapshot => {
                 snapshot.forEach(doc => {
-                console.log(doc.id, '=>', doc.data().img_url);
-                renderTest(doc);
+                    console.log(doc.id, '=>', doc.data().img_url);
+                    renderTest(doc);
+                    createOnClick(doc.data().subject, doc.data().message, doc.data().img_url);
                 });
             })
             .catch(err => {
                 console.log('Error getting documents', err);
             });        
+        }
+
+        function createOnClick(subject, msg, img_src) {
+            var modal = document.getElementById("postModal");
+            console.log("got modal", modal);
+            // Get the button that opens the modal
+            var links = document.getElementsByClassName("post-link");
+            console.log("got button", links);
+            
+            document.getElementById("modal-title").innerHTML = subject;
+            document.getElementById("modal-image").src = img_src; 
+            document.getElementById("modal-description").innerHTML = msg;
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            console.log("got span");
+            
+            for(var i = 0; i < links.length; i++) {
+                // When the user clicks the button, open the modal 
+                links[i].onclick = function() {
+                console.log("hello");
+                modal.style.display = "block";
+                if (i < links.length) modal.h4.innerHTML = links[i].button.h2.value;
+                console.log("button " + i + " is clicked");
+                }
+            }
+            
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+            
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
         }
     </script>
     </body>

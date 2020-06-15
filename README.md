@@ -15,7 +15,7 @@ Dis-COVID provides users with a supportive community where they can discover new
 
 ## How we built it
 
-HTML5 and CSS3 were used to structure and style the web application. Javascript was used to integrate [Firebase](https://firebase.google.com/) into the application. To create user accounts, the authentication feature in Firebase was used. [Cloud Firestore](https://firebase.google.com/docs/firestore/) was used to store all information relating to the posts (titles, tags, images, descriptions, etc.). We implemented [Cloud Storage](https://firebase.google.com/docs/storage/) to store all uploaded images. 
+HTML5 and CSS3 were used to structure and style the web application. Javascript was used to integrate [Firebase](https://firebase.google.com/) into the application. To create user accounts, the authentication feature in Firebase was used. [Cloud Firestore](https://firebase.google.com/docs/firestore/) was used to store all information relating to the posts (titles, tags, images, descriptions, etc.). We implemented [Cloud Storage](https://firebase.google.com/docs/storage/) to store all uploaded images. To host the website we used [Heroku](https://www.heroku.com/what) that automatically deploys from this repository.
 
 ## Challenges we ran into
 
